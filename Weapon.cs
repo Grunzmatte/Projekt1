@@ -15,6 +15,8 @@ namespace Projekt1
         static private string[] Weapons = { "Axt", "Schwert", "Stein", "Stock", "erloschene Fackel" };
         static private string[] WeaponNameModifyer = { "alte(r/s)", "kleine(r/s)", "große(r/s)","stumpfe(r/s)" };
         
+        //Waffenschadenswerte
+
         //Waffen Daten
         private string type;        //Waffentyp
         private string name;        //Name der Waffe

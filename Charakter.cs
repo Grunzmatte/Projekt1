@@ -10,7 +10,6 @@ namespace Projekt1
     /// Charakter wird hier eingestellt
     /// </summary>
 
-
         // Max
     static class Charakter
     {
