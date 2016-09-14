@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Projekt1
 {
+    /// <summary>
+    /// Alle Items werden hier definiert
+    /// </summary>
+
     class Items
     {
     }

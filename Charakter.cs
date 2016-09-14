@@ -5,8 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Projekt1
-{
-    class Char
+{   
+    /// <summary>
+    /// Charakter wird hier eingestellt
+    /// </summary>
+    class Charakter
     {
     }
 }

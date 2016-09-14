@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Projekt1
-{
+{   
+    /// <summary>
+    /// Gegner werden hier eingestellt
+    /// </summary>
+
     class Enemy
     {
     }
