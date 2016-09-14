@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Projekt1
 {
+    //Dome
     class Weapon
     {
         static private Random RNGenerator = new Random();       //Zufalls Zahlen Generator
 
         //Namenskombinationen
         static private string[] Weapons = { "Axt", "Schwert", "Stein", "Stock", "erloschene Fackel" };
-        static private string[] WeaponNameModifyer = { "alte(r)", "kleine(r)", "große(r)","stumpfe(r)" };
+        static private string[] WeaponNameModifyer = { "alte(r/s)", "kleine(r/s)", "große(r/s)","stumpfe(r/s)" };
         
         //Waffen Daten
-        private string type;
+        private string type;        //Waffentyp
         private string name;        //Name der Waffe
         private int damage;         //Schaden der Waffe
         static private int minWeaponDamage = 1;     //Mindestschaden den eine Waffe machen muss
