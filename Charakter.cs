@@ -19,6 +19,8 @@ namespace Projekt1
         private static int ammountpotion = 1; // Anzahl an Tränken 
         private static int maxammountpotion = 3; // Maximale Anuahl an Tränken
         private static bool nameSet = false; // Wurde der Name schon gesetzt
+        internal static Weapon weapon; // Waffe 
+
 
         internal static string Name // Methode zum Namen Setzten
         {

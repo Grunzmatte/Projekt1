@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Projekt1
 {
-    class Rooms
+    class Room
     {
-
+        internal string type;
     }
 }

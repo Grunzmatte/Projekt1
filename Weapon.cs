@@ -31,6 +31,15 @@ namespace Projekt1
             name = WeaponNameModifyer[RNGenerator.Next(0, WeaponNameModifyer.Length)] + " " + type;     //Waffennamen Zufällig bestimmen
         }
 
+        internal Weapon(string NameDesCharakters)
+        {
+            type = "Faust";    //Waffentyp bestimmen (Faust des Charakters)
+            damage = 1;            //Waffenschaden auf 1 setzen
+            name = NameDesCharakters + "Faust"  ;     //Waffennamen Zufällig bestimmen
+        }
+
+
+
         public int Damage { get { return damage; }  }   //Waffenschaden abfragen
 
         public string Name { get { return name; } }     //Waffennamen abfragen
