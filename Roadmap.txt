@@ -1,0 +1,31 @@
+
+Donnerstag 16.09.17
+
+Dave:
+ 
+- Healing function ( Abfrage ob der Spieler noch Tränke besitzt --> Heilung um 5)
+- Rooms ( Abzweigungen ( 2er, 3 er) Räume ( kleiner, mittlerer, großer )
+
+Sascha:
+
+- lootsystem ( Gegner lassen Tränke fallen ( 33 % Chance ) + Gold in den Räumen wenn gelootet wird ( Random 1 - 5 )
+- laufen ( Abzweigungen und Räume aneinander reihen --> dauerschleife oder iwas anderes )
+- gegner spawn ( Gegner spawnen mit den angegeben Chancen die bereits vergeben wurden )
+ 
+Dome:
+
+- Kampfsystem ( Random Zahl 1 - 5 Spieler muss raten, wenn er richtig liegt macht er kritischen Schaden ( Doppelt) liegt der Spieler mehr als 2 daneben macht der Gegner schaden )
+- Status abfrage ( Info mit HP und Anzahl Tränke sowie Gold
+
+Max:
+
+- Main functions auslagern ( Main programm.cs schlank halten )
+- Healing function ( Mit Dave Healing funktion )
+- Lootsystem ( Mit Sascha ausarbeiten )
+
+
+Frühsten ab 17.09.16
+Ideen ( Kann jeder was dazuschreiben ) :
+
+Highscore
+Shop
