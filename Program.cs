@@ -10,6 +10,9 @@ namespace Projekt1
     {
         static void Main(string[] args)
         {
+            int maxProzent = 100;   //Maximale Random Prozent
+            int minProzent = 1;     //Mindest Random Prozent 
+            int enemyInRoom = 70;   //Wahrscheinlichkeit das beim looten ein Gegner erscheint
             Random random = new Random();
             Position schrift = new Position();
             ConsoleKey Taste;
@@ -62,7 +65,7 @@ namespace Projekt1
                         //Gegner erscheint 70% wahrs.
 
                         Console.WriteLine("Du gehst in den Raum und fängst an zu looten");
-                        if (random.Next(0, 99) > 29)
+                        if (random.Next(minProzent, maxProzent+1) <= enemyInRoom)
                         {
                             Console.WriteLine("Ein Gegner ist erschienen");
 
@@ -79,7 +82,7 @@ namespace Projekt1
                         //gegner erscheint 30% wahrs.
 
                         Console.WriteLine("Du durchquerst den Raum ohne zu looten");
-                        if (random.Next(0, 99) <= 29)
+                        if (random.Next(minProzent, maxProzent + 1) > enemyInRoom)
                         {
                             Console.WriteLine("Ein Gegner ist erschienen");
                         }
