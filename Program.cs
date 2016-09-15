@@ -63,11 +63,33 @@ namespace Projekt1
                         //Raum looten
                         //Gegner erscheint 70% wahrs.
 
+                        Console.WriteLine("Du gehst in den Raum und fängst an zu looten");
+                        if (random.Next(0, 99) > 29)
+                        {
+                            Console.WriteLine("Ein Gegner ist erschienen");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Du lootest den Raum und hattest Glück, kein Gegner ist erschienen");
+                        }
+                        
                     }
                     else
                     {
                         //Raum wird nicht gelootet
                         //gegner erscheint 30% wahrs.
+
+                        Console.WriteLine("Du durchquerst den Raum ohne zu looten");
+                        if (random.Next(0, 99) <= 29)
+                        {
+                            Console.WriteLine("Ein Gegner ist erschienen");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Du durchquerst den Raum und hattest Glück");
+                        }
+                       
                     }
 
                 }
