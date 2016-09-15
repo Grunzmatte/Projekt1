@@ -45,7 +45,7 @@ namespace Projekt1
             Console.ReadKey();
             
             //Solange der spieler nicht escape drückt oder stirbt geht das spiel weiter
-            while (!ConsoleKeyInfo.Equals(ConsoleKey.Escape,Taste) || Charakter.Health > 0 )
+            while (!ConsoleKeyInfo.Equals(ConsoleKey.Escape,Taste) && !(Charakter.Health == 0) )
             {
                 Room room = new Room();
                 Console.WriteLine("Du kommst an eine(n)" + room.type);
@@ -53,13 +53,17 @@ namespace Projekt1
                 {
                     Console.WriteLine("Möchtest du versuchen den Raum zu durchsuchen? Es könte ein Gegner auf dich lauern!");
                         Taste = Console.ReadKey().Key;
-                    while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, Taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, Taste))
+                    while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, Taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, Taste) && !ConsoleKeyInfo.Equals(ConsoleKey.Escape, Taste))
                     {
                         Console.CursorLeft = 0;
                         Taste = Console.ReadKey().Key;
                     }
                     Console.CursorLeft = 0;
-                    if (ConsoleKeyInfo.Equals(ConsoleKey.Y, Taste))
+                    if (!ConsoleKeyInfo.Equals(ConsoleKey.Escape, Taste))
+                    {
+                        break;
+                    }
+                    else if (ConsoleKeyInfo.Equals(ConsoleKey.Y, Taste))
                     {
                         //Raum looten
                         //Gegner erscheint 70% wahrs.
@@ -104,8 +108,10 @@ namespace Projekt1
                     {
                         //nächster Raum
                     }
-
+                    Console.WriteLine("In welche richtung möchtest du gehen ? [links | geradeaus | rechts] ");
+                    Taste = Console.ReadKey().Key;
                 }
+                
             }
 
 
