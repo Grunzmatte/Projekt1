@@ -19,6 +19,7 @@ namespace Projekt1
         private static int ammountPotion = 1; // Anzahl an Tränken 
         private static int maxAmmountPotion = 3; // Maximale Anuahl an Tränken
         private static bool nameSet = false; // Wurde der Name schon gesetzt
+        private static int gold = 0;
         internal static Weapon weapon; // Waffe 
 
 
@@ -28,16 +29,28 @@ namespace Projekt1
             set { if (!nameSet) { name = value; nameSet = true; } } 
         }
 
-        internal static int Health // Methode um die Health zu verändern
+        internal static int Health // Methode um die Health zu verändern und abzufragen
         {
             get { return health; }
             set { if (health + value > maxHealth)  health = maxHealth;  else  health += value;  }
         }
 
-        internal static int Potion // Methode zum Anzahl der Tränke ändern
+        internal static int Potion // Methode zum Anzahl der Tränke ändern und abfragen
         {
             get { return ammountPotion; }
             set { if (ammountPotion + value > maxAmmountPotion)  ammountPotion = maxAmmountPotion;  else  ammountPotion  += value;  }
+        }
+
+        internal static int MaxPotion // Methode zum Anzahl der Maximalen Tränke ändern und abfragen
+        {
+            get { return maxAmmountPotion; }
+            set { maxAmmountPotion += value; }
+        }
+
+        internal static int Gold // Methode zum Anzahl des Goldes ändern und abfragen
+        {
+            get { return gold; }
+            set { gold += value; }
         }
 
         internal static string setName() // Der Spieler wird nach seinem Namen gefragt
@@ -46,6 +59,12 @@ namespace Projekt1
             name = Console.ReadLine();
             Console.WriteLine("Gut, immerhin etwas. Du schaust ob irgendwas in deiner Tasche ist.\nDu findest in deiner Tasche einen Heiltrank.\n");
             return name;
+        }
+
+        internal static int MaxHealth // Methode um die Health zu verändern
+        {
+            get { return maxHealth; }
+            set { maxHealth += value; }
         }
 
     }

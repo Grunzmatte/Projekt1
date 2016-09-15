@@ -21,7 +21,8 @@ namespace Projekt1
             Charakter.setName();
 
             // Der Char bekommt eine Waffe
-            Function.pickWeapon();   
+            Function.pickWeapon();
+            Function.stats(); 
 
             Console.WriteLine(" \nDu hörst von Rechts Geräusche und folgst vorsichtig dem Gang. ");
             Taste = Console.ReadKey().Key;

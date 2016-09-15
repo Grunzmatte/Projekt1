@@ -41,6 +41,8 @@ namespace Projekt1
 
         public string Name { get { return name; } }     //Waffennamen abfragen
 
+        public float Speed { get { return atackspeed; } }     //Waffennamen abfragen
+        
         private int SetDamage(WeaponType.Type type)
         {
             int damage;
