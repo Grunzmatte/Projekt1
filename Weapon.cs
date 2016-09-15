@@ -12,37 +12,63 @@ namespace Projekt1
         static private Random RNGenerator = new Random();       //Zufalls Zahlen Generator
 
         //Namenskombinationen
-        static private string[] Weapons = { "Axt", "Schwert", "Stein", "Stock", "erloschene Fackel" };
-        static private string[] WeaponNameModifyer = { "alte(r/s)", "kleine(r/s)", "große(r/s)","stumpfe(r/s)" };
-        
-        //Waffenschadenswerte
+        static private string[] WeaponNameModifyer = { "alte", "kleine", "große","stumpfe" };
 
-        //Waffen Daten
-        private string type;        //Waffentyp
-        private string name;        //Name der Waffe
-        private int damage;         //Schaden der Waffe
+        //Waffenschadenswerte
         static private int minWeaponDamage = 1;     //Mindestschaden den eine Waffe machen muss
         static private int maxWeaponDamage = 5;     //Maximalschaden den eine Waffe machen kann
 
+
+        //Waffen Daten
+        private WeaponType.Type type;       //Waffentyp
+        private string name;                //Name der Waffe
+        private int damage;                 //Schaden der Waffe
+        private float atackspeed;           //Geschwindigkeit welche bestimmt wer zuerst zuschlägt
+        
         internal Weapon()
         {
-            type = Weapons[RNGenerator.Next(0, Weapons.Length)];    //Waffentyp bestimmen
-            damage = RNGenerator.Next(minWeaponDamage, maxWeaponDamage + 1);            //Waffenschaden Zufällig bestimmen
-            name = WeaponNameModifyer[RNGenerator.Next(0, WeaponNameModifyer.Length)] + " " + type;     //Waffennamen Zufällig bestimmen
+            type = SetType();           //Waffenart zufällig bestimmen
+            damage = SetDamage(type);   //Waffenschaden Zufällig bestimmen
+            name = SetName(type);       //Waffennamen Zufällig bestimmen
+            atackspeed = SetSpeed(type);//Waffengeschwindigkeit zufällig bestimmen
         }
 
         internal Weapon(string NameDesCharakters)
         {
-            type = "Faust";    //Waffentyp bestimmen (Faust des Charakters)
-            damage = 1;            //Waffenschaden auf 1 setzen
-            name = NameDesCharakters + "Faust"  ;     //Waffennamen Zufällig bestimmen
+            type = WeaponType.type[WeaponType.type.Length];    //Waffentyp bestimmen (Faust des Charakters)
+            damage = SetDamage(type);           
+            name = NameDesCharakters + "s " + type.typeName;     //Waffennamen Zufällig bestimmen
+            atackspeed = SetSpeed(type);
         }
-
-
 
         public int Damage { get { return damage; }  }   //Waffenschaden abfragen
 
         public string Name { get { return name; } }     //Waffennamen abfragen
+
+        private int SetDamage(WeaponType.Type type)
+        {
+            int damage;
+
+            //Waffenschaden bestimmen
+            damage = RNGenerator.Next(type.minDamage, type.maxDamage + 1);
+
+            return damage; 
+        }
+
+        private WeaponType.Type SetType()
+        {
+            return WeaponType.type[RNGenerator.Next(0, WeaponType.type.Length)];
+        }
+
+        private string SetName(WeaponType.Type type)
+        {
+            return WeaponNameModifyer[RNGenerator.Next(0,WeaponNameModifyer.Length)] + type.nameModifyer + " " + type.typeName;
+        }
+
+        private int SetSpeed (WeaponType.Type type)
+        {
+            return RNGenerator.Next(type.minSpeed,type.maxSpeed+1);
+        }
         
     }
 

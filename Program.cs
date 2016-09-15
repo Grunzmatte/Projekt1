@@ -41,6 +41,7 @@ namespace Projekt1
             }
 
             Console.WriteLine(" \nDu hörst von Rechts Geräusche und folgst vorsichtig dem Gang. ");
+            Console.ReadKey();
             
             //Solange der spieler nicht escape drückt oder stirbt geht das spiel weiter
             while (!ConsoleKeyInfo.Equals(ConsoleKey.Escape,Taste) || Charakter.Health > 0 )
