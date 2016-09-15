@@ -15,9 +15,7 @@ namespace Projekt1
             ConsoleKey Taste;
 
             // Namenseingabe
-            Console.WriteLine("Du wachst in einem dunklen Gang mit Kopfschmerzen und einer Wunde am Kopf auf. Weißt du noch wie dein Name ist ? \n");
-            Charakter.Name = Console.ReadLine();
-            Console.WriteLine("Gut, immerhin etwas. Du schaust ob irgendwas in deiner Tasche ist.\nDu findest in deiner Tasche einen Heiltrank.\n");
+            Charakter.setName();
 
             Console.WriteLine("Du siehst vor dir auf dem Boden einen Gegenstand der sich als Waffe eignet möchtest du ihn aufheben ? [y/n]\n");
             schrift.Spalte = (uint)Console.CursorLeft;

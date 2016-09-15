@@ -36,8 +36,16 @@ namespace Projekt1
 
         internal static int Potion // Methode zum Anzahl der Tränke ändern
         {
-            get { return maxAmmountPotion; }
-            set { if (ammountPotion + value > maxAmmountPotion)  ammountPotion = maxAmmountPotion;  else  ammountpotion  += value;  }
+            get { return ammountPotion; }
+            set { if (ammountPotion + value > maxAmmountPotion)  ammountPotion = maxAmmountPotion;  else  ammountPotion  += value;  }
+        }
+
+        internal static string setName()
+        {
+            Console.WriteLine("Du wachst in einem dunklen Gang mit Kopfschmerzen und einer Wunde am Kopf auf. Weißt du noch wie dein Name ist ? \n");
+            name = Console.ReadLine();
+            Console.WriteLine("Gut, immerhin etwas. Du schaust ob irgendwas in deiner Tasche ist.\nDu findest in deiner Tasche einen Heiltrank.\n");
+            return name;
         }
 
        
