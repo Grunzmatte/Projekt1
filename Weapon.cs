@@ -53,7 +53,7 @@ namespace Projekt1
 
         private WeaponType.Type SetType()
         {
-            return WeaponType.type[RNGenerator.Next(0, WeaponType.type.Length)];
+            return WeaponType.type[RNGenerator.Next(0, WeaponType.type.Length - 1)];
         }
 
         private string SetName(WeaponType.Type type)
