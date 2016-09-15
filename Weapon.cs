@@ -13,11 +13,7 @@ namespace Projekt1
 
         //Namenskombinationen
         static private string[] WeaponNameModifyer = { "alte", "kleine", "große","stumpfe" };
-
-        //Waffenschadenswerte
-        static private int minWeaponDamage = 1;     //Mindestschaden den eine Waffe machen muss
-        static private int maxWeaponDamage = 5;     //Maximalschaden den eine Waffe machen kann
-
+        
 
         //Waffen Daten
         private WeaponType.Type type;       //Waffentyp
