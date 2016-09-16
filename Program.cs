@@ -83,6 +83,27 @@ namespace Projekt1
                 }
                 else
                 {
+                    Console.WriteLine("\tMöchtest du dein Inventar aufrufen bevor du weitergehst? [y/n]\n");
+                    taste = Console.ReadKey().Key;
+                    Console.CursorLeft = 0;
+                    if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
+                    {
+                        Function.stats();
+                        Console.WriteLine("\tMöchtest du einen Heiltrank benutzen? [y/n]\n");
+                        taste = Console.ReadKey().Key;
+                        Console.CursorLeft = 0;
+
+                        if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
+                        {
+                            Charakter.Health += Items.potionHeal;
+                            Charakter.ammountPotion -= 1;
+
+                            Function.stats();
+
+                        }
+                        Console.ReadKey();
+                    }
+
                     if (random.Next(0,2) == 1)
                     {
                         //Gegner erscheint
@@ -93,18 +114,7 @@ namespace Projekt1
                         //nächster Raum
                     }
 
-                    Console.WriteLine("\tMöchtest du dein Inventar aufrufen bevor du weitergehst? [y/n]\n");
-                    taste = Console.ReadKey().Key;
-                    if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
-                    {
-                        Function.stats();
-                        Console.WriteLine("Möchtest du einen Heiltrank benutzen? [y/n]\n");
-                        if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
-                        {
-                            
-                        }
-                        Console.ReadKey();
-                    }
+                    
                     Console.WriteLine("\tIn welche richtung möchtest du gehen ? [links | geradeaus | rechts] ");
                     taste = Console.ReadKey().Key;
                     while (!ConsoleKeyInfo.Equals(ConsoleKey.LeftArrow, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.RightArrow, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.UpArrow, taste))

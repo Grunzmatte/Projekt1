@@ -14,10 +14,9 @@ namespace Projekt1
     static class Charakter
     {
         private static string name; // Spieler Name
-        private static int health = 25; // Spieler Hp
+        private static int health = 20; // Spieler Hp
         private static int maxHealth = 25; // Maximale Spieler Hp
-        private static int potion = 0;
-        private static int ammountPotion = 1; // Anzahl an Tränken 
+        public static int ammountPotion = 1; // Anzahl an Tränken 
         private static int maxAmmountPotion = 3; // Maximale Anuahl an Tränken
         private static bool nameSet = false; // Wurde der Name schon gesetzt
         private static int gold = 0;
@@ -57,7 +56,6 @@ namespace Projekt1
         internal static string setName() // Der Spieler wird nach seinem Namen gefragt
         {
             Console.Write("\n\n\tDu wachst in einem dunklen Gang mit Kopfschmerzen \n\tund einer Wunde am Kopf auf. \n\n\tWeißt du noch wie dein Name ist ? \n\n\t");
-            name = Console.ReadLine();
             Console.WriteLine("\n\tGut, immerhin etwas.\n");
             Function.horizontalRow();
             Console.WriteLine("\n\tDu schaust ob irgendwas in deiner Tasche ist.\n\tDu findest in deiner Tasche einen Heiltrank.\n");

@@ -12,7 +12,7 @@ namespace Projekt1
 
     class Items
     {
-        internal static int potion = 0;
+        internal static int potion = Charakter.ammountPotion;
         internal static int potionHeal = 5;
     }
 }
