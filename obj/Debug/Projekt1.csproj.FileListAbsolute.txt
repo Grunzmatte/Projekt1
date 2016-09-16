@@ -22,3 +22,9 @@ C:\Users\Sascha\Desktop\SAE Studium\Games Programming\Projekt1\obj\Debug\Projekt
 C:\Users\Sascha\Desktop\SAE Studium\Games Programming\Projekt1\bin\Debug\Projekt1.exe
 C:\Users\Sascha\Desktop\SAE Studium\Games Programming\Projekt1\bin\Debug\Projekt1.pdb
 C:\Users\Sascha\Desktop\SAE Studium\Games Programming\Projekt1\obj\Debug\Projekt1.csprojResolveAssemblyReference.cache
+C:\Users\Max\Documents\Visual Studio 2015\Projects\Projekt1-master\bin\Debug\Projekt1.exe.config
+C:\Users\Max\Documents\Visual Studio 2015\Projects\Projekt1-master\obj\Debug\Projekt1.exe
+C:\Users\Max\Documents\Visual Studio 2015\Projects\Projekt1-master\obj\Debug\Projekt1.pdb
+C:\Users\Max\Documents\Visual Studio 2015\Projects\Projekt1-master\bin\Debug\Projekt1.exe
+C:\Users\Max\Documents\Visual Studio 2015\Projects\Projekt1-master\bin\Debug\Projekt1.pdb
+C:\Users\Max\Documents\Visual Studio 2015\Projects\Projekt1-master\obj\Debug\Projekt1.csprojResolveAssemblyReference.cache
