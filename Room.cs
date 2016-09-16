@@ -8,6 +8,15 @@ namespace Projekt1
 {
     class Room
     {
-        internal string type;
+        static private Random RNGenerator = new Random();
+
+        static internal string[] roomName = { "kleiner", "mittlerer", "großer" };
+
+        static internal string name; //Name des Raumes
+         
+        internal static string prefix()
+        {
+            return name = roomName[RNGenerator.Next(0, roomName.Length)];
+        }
     }
 }
