@@ -10,3 +10,6 @@ C:\Users\Max\Documents\Visual Studio 2015\Projects\Projektarbeit\Projekt1\obj\De
 C:\Users\Max\Documents\Visual Studio 2015\Projects\Projektarbeit\Projekt1\obj\Debug\Projekt1.csprojResolveAssemblyReference.cache
 C:\Users\Max\Documents\Visual Studio 2015\Projects\Projektarbeit\Projekt1\bin\Debug\Projekt1.exe
 C:\Users\Max\Documents\Visual Studio 2015\Projects\Projektarbeit\Projekt1\bin\Debug\Projekt1.pdb
+C:\Users\Max\Documents\GitHub\Projekt1\bin\Debug\Projekt1.exe.config
+C:\Users\Max\Documents\GitHub\Projekt1\obj\Debug\Projekt1.exe
+C:\Users\Max\Documents\GitHub\Projekt1\obj\Debug\Projekt1.pdb
