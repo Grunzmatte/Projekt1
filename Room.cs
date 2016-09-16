@@ -10,7 +10,7 @@ namespace Projekt1
     {
         static private Random RNGenerator = new Random();
 
-        static internal string[] Names = { "kleiner", "mittlerer", "großer" };
+        static internal string[] Names = { "kleinen", "mittleren", "großen" };
 
         private string name; //Name des Raumes
 

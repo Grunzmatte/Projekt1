@@ -41,29 +41,38 @@ namespace Projekt1
 
                     Console.WriteLine("\tMöchtest du versuchen den Raum zu durchsuchen? \n\tEs könte ein Gegner auf dich lauern! [y|n]");
                     taste = Console.ReadKey().Key;
+
                     while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))
                     {
                         Console.CursorLeft = 0;
                         taste = Console.ReadKey().Key;
                     }
+
                     Console.CursorLeft = 0;
+
                     if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))
                     {
                         break;
                     }
+
                     else if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
                     {
                         //Raum looten
                         //Gegner erscheint 70% wahrs.
 
                         Console.WriteLine("\tDu gehst in den Raum und fängst an zu looten\n");
+
                         if (random.Next(minProzent, maxProzent+1) <= enemyInRoom)
                         {
                             Function.fight();
+                            Function.loot();
+
                         }
                         else
                         {
                             Console.WriteLine("\tDu lootest den Raum und hattest Glück,\n\tkein Gegner ist erschienen\n");
+                            Function.loot();
+
                         }
                         
                     }
@@ -93,6 +102,7 @@ namespace Projekt1
                     {
                         //Gegner erscheint
                         Function.fight();
+                        Function.loot();
                     }
                     else
                     {

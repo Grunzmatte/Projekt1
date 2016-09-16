@@ -14,6 +14,7 @@ namespace Projekt1
     {
 
         private static ConsoleKey taste;
+        
 
         //Dome + Max
         internal static void pickWeapon()
@@ -262,12 +263,12 @@ namespace Projekt1
             Console.WriteLine("║");
             Console.WriteLine("\t╚═══════════════════════════════════════════════╝");
         }
-
+        //Dome
         internal static void horizontalRow()
         {
             Console.WriteLine("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         }
-
+        //Sascha
         internal static void openInventory()
         {
             Console.WriteLine("\tMöchtest du dein Inventar aufrufen bevor du weitergehst? [y/n]\n");
@@ -290,7 +291,7 @@ namespace Projekt1
                 Console.ReadKey();
             }
         }
-
+        //Max
         internal static void healing()
         {
 
@@ -310,6 +311,39 @@ namespace Projekt1
             }
 
             
+        }
+        //Max
+        internal static void loot()
+        {
+            Random random = new Random();
+            int chance = 100; // 100% MaxChance
+            int potionChance = 30;
+            int goldCap = 10;
+            int gold = 0;
+
+            if (random.Next(1, chance + 1) <= potionChance)
+            {
+                if(Charakter.Potion <= Charakter.MaxPotion)
+                {
+                    Charakter.Potion++;
+                    Console.WriteLine("Du hast einen Heiltrank gefunden");
+                }
+                else if (Charakter.Potion == Charakter.MaxPotion && Charakter.Health < Charakter.MaxHealth)
+                {
+                    Function.healing();
+                    Console.WriteLine("Du hast einen Heiltrank gefunden und dich sofort damit geheilt!");
+                    Charakter.Potion++;
+                }
+                else
+                {
+                    Console.WriteLine("Du hast einen Heiltrank gefunden, aber dein Inventar ist voll!");
+                }
+            }
+
+            gold = random.Next(1, goldCap + 1);
+            Charakter.Gold += gold;
+            Console.WriteLine("Du hast {0} Gold gefunden.", gold);
+
         }
     }
 }
