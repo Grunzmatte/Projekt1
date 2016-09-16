@@ -16,6 +16,7 @@ namespace Projekt1
         private static string name; // Spieler Name
         private static int health = 25; // Spieler Hp
         private static int maxHealth = 25; // Maximale Spieler Hp
+        private static int potion = 0;
         private static int ammountPotion = 1; // Anzahl an Tränken 
         private static int maxAmmountPotion = 3; // Maximale Anuahl an Tränken
         private static bool nameSet = false; // Wurde der Name schon gesetzt
@@ -32,13 +33,13 @@ namespace Projekt1
         internal static int Health // Methode um die Health zu verändern und abzufragen
         {
             get { return health; }
-            set { if (health + Items.healPotion > maxHealth)  health = maxHealth;  else  health += Items.healPotion;  }
+            set { if (health + Items.potionHeal > maxHealth)  health = maxHealth;  else  health += Items.potionHeal;  }
         }
 
         internal static int Potion // Methode zum Anzahl der Tränke ändern und abfragen
         {
             get { return ammountPotion; }
-            set { if (ammountPotion + value > maxAmmountPotion)  ammountPotion = maxAmmountPotion;  else  ammountPotion  += value;  }
+            set { if (ammountPotion + Items.potion > maxAmmountPotion)  ammountPotion = maxAmmountPotion;  else  ammountPotion  += Items.potion;}
         }
 
         internal static int MaxPotion // Methode zum Anzahl der Maximalen Tränke ändern und abfragen

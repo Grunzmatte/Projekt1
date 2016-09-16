@@ -12,6 +12,7 @@ namespace Projekt1
 
     class Items
     {
-        internal static int healPotion = 5;
+        internal static int potion = 0;
+        internal static int potionHeal = 5;
     }
 }
