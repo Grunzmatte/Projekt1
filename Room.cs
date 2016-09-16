@@ -10,13 +10,20 @@ namespace Projekt1
     {
         static private Random RNGenerator = new Random();
 
-        static internal string[] roomName = { "kleiner", "mittlerer", "großer" };
+        static internal string[] Names = { "kleiner", "mittlerer", "großer" };
 
-        static internal string name; //Name des Raumes
-         
-        internal static string prefix()
+        private string name; //Name des Raumes
+
+        internal Room()
         {
-            return name = roomName[RNGenerator.Next(0, roomName.Length)];
+            name = Names[RNGenerator.Next(0, Names.Length)];
         }
+
+        internal string Name
+        {
+            get { return name; }
+        }
+         
+        
     }
 }
