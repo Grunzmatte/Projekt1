@@ -33,7 +33,8 @@ namespace Projekt1
             else 
             {
                 Charakter.weapon = new Weapon(Charakter.Name);
-                Console.WriteLine(" \nDann kämpfe halt mit deinen Fäusten du Depp!");
+                Console.WriteLine(" \n\tDann kämpfe halt mit deinen Fäusten du Depp!");
+                Function.horizontalRow();
                 
             }
 
@@ -81,22 +82,28 @@ namespace Projekt1
             int sumSpeedEnemy = 0;      //Summe der Angriffsgeschwindigkeit über alle Angriffe hinweg
             int sumSpeedPlayer = 0;
 
-            Console.WriteLine("═════════════════════════════════════════════════════════════════════════════");
-            Console.WriteLine("Ein(e) {0} steht auf einmal vor dir und greift dich an!\n", enemy.Name);
+            Function.horizontalRow();
+            Console.WriteLine("\n\tEin(e) {0} erscheint auf einmal vor dir und greift dich an!\n", enemy.Name);
             enemyStats(enemy);          //Statuswerte des Gegners werden angezeigt
-            sumSpeedEnemy = enemy.Weapon.Speed;
-            sumSpeedPlayer = Charakter.weapon.Speed;
+
+            sumSpeedEnemy += enemy.Weapon.Speed;
+            sumSpeedPlayer += Charakter.weapon.Speed;
+
             while (Charakter.Health > 0 && enemy.Health > 0)    //Solange der Spieler und der Gegner noch leben geht der Kampf weiter.
             {
+                
                 if (sumSpeedEnemy < sumSpeedPlayer)         //der Kämpfer mit der kleineren geschwindigkeits summe greift zuerst an
                 {
                     //Gegner greift an
-                    Console.WriteLine("\tDer Gegner greift an verteidige dich!");
+                    sumSpeedEnemy += enemy.Weapon.Speed;
+                    Console.WriteLine();
+                    Function.horizontalRow();
+                    Console.WriteLine("\n\tDer Gegner greift an verteidige dich!");
                     Console.WriteLine("\t[1] Oben");
                     Console.WriteLine("\t[2] Links");
                     Console.WriteLine("\t[3] Mitte");
                     Console.WriteLine("\t[4] Rechts");
-                    Console.WriteLine("\t[5] Unten");
+                    Console.WriteLine("\t[5] Unten\n\n");
                     taste = Console.ReadKey().Key;
                     int direction = random.Next(1, directions + 1);
                     while(!ConsoleKeyInfo.Equals(ConsoleKey.D1,taste) && !ConsoleKeyInfo.Equals(ConsoleKey.D2, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.D3, taste)&& !ConsoleKeyInfo.Equals(ConsoleKey.D4, taste)&& !ConsoleKeyInfo.Equals(ConsoleKey.D5, taste))
@@ -133,18 +140,21 @@ namespace Projekt1
                         default:
                             break;
                     }
-                    break;
+                    
                 }
                 else
                 {
                     //Spieler greift an
-                    Console.WriteLine("\tDu greifst an!");
+                    sumSpeedPlayer += Charakter.weapon.Speed;
+                    Console.WriteLine();
+                    Function.horizontalRow();
+                    Console.WriteLine("\n\tDu greifst an!");
                     Console.WriteLine("\tWähle die richtung aus der du angreifst.");
                     Console.WriteLine("\t[1] Oben");
                     Console.WriteLine("\t[2] Links");
                     Console.WriteLine("\t[3] Mitte");
                     Console.WriteLine("\t[4] Rechts");
-                    Console.WriteLine("\t[5] Unten");
+                    Console.WriteLine("\t[5] Unten\n\n");
                     taste = Console.ReadKey().Key;
                     int direction = random.Next(1, directions + 1);
                     while (!ConsoleKeyInfo.Equals(ConsoleKey.D1, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.D2, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.D3, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.D4, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.D5, taste))
@@ -178,35 +188,35 @@ namespace Projekt1
                         default:
                             break;
                     }
-                    break;
                 }
             }
 
             if (Charakter.Health == 0)
             {
-                Console.WriteLine("Du bist gestorben!");
+                Console.Clear();
+                Console.WriteLine("\n\n\n\n\n\n\t\tDu bist gestorben!");
             }
             else
             {
                 Console.WriteLine("\n\tDu hast {0} zusammengeschlagen!\n\tWeiter so ;)",enemy.Name);
                 Console.WriteLine("\n\t╔═══════════════════════════════════════════════╗");
-                Console.WriteLine("║Deine Waffe: {0}", Charakter.weapon.Name);
+                Console.Write("\t║Deine Waffe: {0}", Charakter.weapon.Name);
                 Console.CursorLeft = statWindowWidth;
                 Console.WriteLine("║");
-                Console.WriteLine("║Schaden: {0}", Charakter.weapon.Damage);
+                Console.Write("\t║Schaden: {0}", Charakter.weapon.Damage);
                 Console.CursorLeft = statWindowWidth;
                 Console.WriteLine("║");
-                Console.WriteLine("║Geschwindigkeit: {0}", Charakter.weapon.Speed);
+                Console.Write("\t║Geschwindigkeit: {0}", Charakter.weapon.Speed);
                 Console.CursorLeft = statWindowWidth;
                 Console.WriteLine("║");
                 Console.WriteLine("\t╠═══════════════════════════════════════════════╣");
-                Console.WriteLine("║Gegner Waffe: {0}", enemy.Weapon.Name);
+                Console.Write("\t║Gegner Waffe: {0}", enemy.Weapon.Name);
                 Console.CursorLeft = statWindowWidth;
                 Console.WriteLine("║");
-                Console.WriteLine("║Schaden: {0}", enemy.Weapon.Damage);
+                Console.Write("\t║Schaden: {0}", enemy.Weapon.Damage);
                 Console.CursorLeft = statWindowWidth;
                 Console.WriteLine("║");
-                Console.WriteLine("║Geschwindigkeit: {0}", enemy.Weapon.Speed);
+                Console.Write("\t║Geschwindigkeit: {0}", enemy.Weapon.Speed);
                 Console.CursorLeft = statWindowWidth;
                 Console.WriteLine("║");
                 Console.WriteLine("\t╚═══════════════════════════════════════════════╝");
@@ -221,8 +231,10 @@ namespace Projekt1
                 {
                     Console.WriteLine("\n\tDu hast nun eine neue Waffe benutze sie weiße!\n\n");
                     Charakter.weapon = enemy.Weapon;
+
                 }
             }
+            Function.horizontalRow();
         }
 
         //Dome
@@ -252,7 +264,5 @@ namespace Projekt1
         {
             Console.WriteLine("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         }
-
-
     }
 }

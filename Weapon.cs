@@ -31,9 +31,9 @@ namespace Projekt1
 
         internal Weapon(string NameDesCharakters)
         {
-            type = WeaponType.type[WeaponType.type.Length];    //Waffentyp bestimmen (Faust des Charakters)
+            type = WeaponType.type[WeaponType.type.Length-1];    //Waffentyp bestimmen (Faust des Charakters)
             damage = SetDamage(type);           
-            name = NameDesCharakters + "s " + type.typeName;     //Waffennamen Zufällig bestimmen
+            name = NameDesCharakters + "es " + type.typeName;     //Waffennamen Zufällig bestimmen
             atackspeed = SetSpeed(type);
         }
 

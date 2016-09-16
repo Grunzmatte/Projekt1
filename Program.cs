@@ -32,10 +32,10 @@ namespace Projekt1
             while (!ConsoleKeyInfo.Equals(ConsoleKey.Escape,taste) && !(Charakter.Health == 0) )
             {
                 Room room = new Room();
-                Console.WriteLine("Du kommst an eine(n)" + room.type);
+                Console.WriteLine("\n\tDu kommst an eine(n)" + room.type);
                 if (room.type == "Raum")
                 {
-                    Console.WriteLine("Möchtest du versuchen den Raum zu durchsuchen? Es könte ein Gegner auf dich lauern!");
+                    Console.WriteLine("\tMöchtest du versuchen den Raum zu durchsuchen? \n\tEs könte ein Gegner auf dich lauern!");
                         taste = Console.ReadKey().Key;
                     while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))
                     {

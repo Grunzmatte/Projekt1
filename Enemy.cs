@@ -15,7 +15,7 @@ namespace Projekt1
         private static Random RNGenerator = new Random();   //Zufalls Zahlen generator 
 
         //Namenskombinationen
-        private static string[] enemyName = { "Goblin", "Ork", "Oger", "Harpie", "Schlange", "Ratte", "Polizist", "Bademeister", "Oma" };
+        private static string[] enemyName = { "Goblin", "Ork", "Oger", "Harpie", "Echsenmensch", "Rattenmensch", "Polizist", "Bademeister", "Oma" };
         private static string[] enemyNameModifikator = { "Alte(r)", "Große(r)", "Grantige(r)", "Junge(r)", "Keifende(r)" };
 
         //Gegner Werte
