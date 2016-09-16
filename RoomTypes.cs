@@ -23,5 +23,7 @@ namespace Projekt1
         //Array über alle existierenden Raum Arten
         static internal Type[] Names = { kleinen, mittleren, großen };
 
+
+
     }
 }

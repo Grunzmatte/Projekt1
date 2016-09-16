@@ -12,10 +12,7 @@ namespace Projekt1
 
     class Function
     {
-
-        private static ConsoleKey taste;
         
-
         //Dome + Max
         internal static void pickWeapon()
         {
@@ -271,6 +268,7 @@ namespace Projekt1
         //Sascha
         internal static void openInventory()
         {
+            ConsoleKey taste; 
             Console.WriteLine("\tMöchtest du dein Inventar aufrufen bevor du weitergehst? [y/n]\n");
             taste = Console.ReadKey().Key;
             Console.CursorLeft = 0;
@@ -325,24 +323,83 @@ namespace Projekt1
                 if(Charakter.Potion <= Charakter.MaxPotion)
                 {
                     Charakter.Potion++;
-                    Console.WriteLine("Du hast einen Heiltrank gefunden");
+                    Console.WriteLine("\tDu hast einen Heiltrank gefunden");
                 }
                 else if (Charakter.Potion == Charakter.MaxPotion && Charakter.Health < Charakter.MaxHealth)
                 {
                     Function.healing();
-                    Console.WriteLine("Du hast einen Heiltrank gefunden und dich sofort damit geheilt!");
+                    Console.WriteLine("\tDu hast einen Heiltrank gefunden und dich sofort damit geheilt!");
                     Charakter.Potion++;
                 }
                 else
                 {
-                    Console.WriteLine("Du hast einen Heiltrank gefunden, aber dein Inventar ist voll!");
+                    Console.WriteLine("\tDu hast einen Heiltrank gefunden, aber dein Inventar ist voll!");
                 }
             }
 
             gold = random.Next(1, goldCap + 1);
             Charakter.Gold += gold;
-            Console.WriteLine("Du hast {0} Gold gefunden.", gold);
+            Console.WriteLine("\tDu hast {0} Gold gefunden.", gold);
 
+        }
+
+        internal static void roomContent(Room room, int minProzent, int maxProzent, int enemyInRoom,ref  ConsoleKey taste )
+        {
+            Random random = new Random();
+
+            Console.WriteLine("\tMöchtest du versuchen den Raum zu durchsuchen? \n\tEs könte ein Gegner auf dich lauern! [y|n]");
+            taste = Console.ReadKey().Key;
+
+            while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))
+            {
+                Console.CursorLeft = 0;
+                taste = Console.ReadKey().Key;
+            }
+
+            Console.CursorLeft = 0;
+
+            if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))
+            {
+                return;
+            }
+
+            else if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
+            {
+                //Raum looten
+                //Gegner erscheint 70% wahrs.
+
+                Console.WriteLine("\tDu gehst in den Raum und fängst an zu looten\n");
+
+                if (random.Next(minProzent, maxProzent + 1) <= enemyInRoom)
+                {
+                    Function.fight();
+                    Function.loot(room.Type.maxAmmountGold);
+
+                }
+                else
+                {
+                    Console.WriteLine("\tDu lootest den Raum und hattest Glück,\n\tkein Gegner ist erschienen\n");
+                    Function.loot(room.Type.maxAmmountGold);
+
+                }
+
+            }
+            else
+            {
+                //Raum wird nicht gelootet
+                //gegner erscheint 30% wahrs.
+
+                Console.WriteLine("\tDu durchquerst den Raum ohne zu looten\n");
+                if (random.Next(minProzent, maxProzent + 1) > enemyInRoom)
+                {
+                    Function.fight();
+                }
+                else
+                {
+                    Console.WriteLine("\tDu durchquerst den Raum und hattest Glück\n");
+                }
+
+            }
         }
     }
 }

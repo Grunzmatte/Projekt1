@@ -35,93 +35,19 @@ namespace Projekt1
             {
                 Room room = new Room();
                 Console.WriteLine("\n\tDu kommst an eine(n) " + room.Type.name + " Raum");
-                if (room.Type.name == RoomType.Names[0].name)
+                
+                Function.roomContent(room, minProzent, maxProzent, enemyInRoom,ref taste);
+
+                
+                Console.WriteLine("\tIn welche richtung möchtest du gehen ? [links | geradeaus | rechts] ");
+                taste = Console.ReadKey().Key;
+                while (!ConsoleKeyInfo.Equals(ConsoleKey.LeftArrow, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.RightArrow, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.UpArrow, taste))
                 {
-                    // kleiner Raum 25% Chance auf Loot
-
-                    Console.WriteLine("\tMöchtest du versuchen den Raum zu durchsuchen? \n\tEs könte ein Gegner auf dich lauern! [y|n]");
-                    taste = Console.ReadKey().Key;
-
-                    while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))
-                    {
-                        Console.CursorLeft = 0;
-                        taste = Console.ReadKey().Key;
-                    }
-
                     Console.CursorLeft = 0;
-
-                    if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))
-                    {
-                        break;
-                    }
-
-                    else if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
-                    {
-                        //Raum looten
-                        //Gegner erscheint 70% wahrs.
-
-                        Console.WriteLine("\tDu gehst in den Raum und fängst an zu looten\n");
-
-                        if (random.Next(minProzent, maxProzent+1) <= enemyInRoom)
-                        {
-                            Function.fight();
-                            Function.loot(room.Type.maxAmmountGold);
-
-                        }
-                        else
-                        {
-                            Console.WriteLine("\tDu lootest den Raum und hattest Glück,\n\tkein Gegner ist erschienen\n");
-                            Function.loot(room.Type.maxAmmountGold);
-
-                        }
-                        
-                    }
-                    else
-                    {
-                        //Raum wird nicht gelootet
-                        //gegner erscheint 30% wahrs.
-
-                        Console.WriteLine("\tDu durchquerst den Raum ohne zu looten\n");
-                        if (random.Next(minProzent, maxProzent + 1) > enemyInRoom)
-                        {
-                            Function.fight();
-                        }
-                        else
-                        {
-                            Console.WriteLine("\tDu durchquerst den Raum und hattest Glück\n");
-                        }
-                       
-                    }
-
-                }
-                else if (room.Type.name == RoomType.Names[1].name)
-                {
-                    // mittlerer Raum = 50% Chance auf Loot                    
-
-                    if (random.Next(0,2) == 1)
-                    {
-                        //Gegner erscheint
-                        Function.fight();
-                        Function.loot(room.Type.maxAmmountGold);
-                    }
-                    else
-                    {
-                        //nächster Raum
-                    }
-
-                    
-                    Console.WriteLine("\tIn welche richtung möchtest du gehen ? [links | geradeaus | rechts] ");
                     taste = Console.ReadKey().Key;
-                    while (!ConsoleKeyInfo.Equals(ConsoleKey.LeftArrow, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.RightArrow, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.UpArrow, taste))
-                    {
-                        Console.CursorLeft = 0;
-                        taste = Console.ReadKey().Key;
-                    }
                 }
-                else
-                {
-                    // großer Raum, 75% Chance auf Loot
-                }
+                Console.CursorLeft = 0;
+
                 Function.openInventory();
             }
 
