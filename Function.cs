@@ -11,7 +11,10 @@ namespace Projekt1
     /// </summary>
 
     class Function
-    {       
+    {
+
+        private static ConsoleKey taste;
+
         //Dome + Max
         internal static void pickWeapon()
         {
@@ -263,6 +266,30 @@ namespace Projekt1
         internal static void horizontalRow()
         {
             Console.WriteLine("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
+        }
+
+        internal static void openInventory()
+        {
+            Console.WriteLine("\tMöchtest du dein Inventar aufrufen bevor du weitergehst? [y/n]\n");
+            taste = Console.ReadKey().Key;
+            Console.CursorLeft = 0;
+                    if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
+                    {
+                Function.stats();
+                Console.WriteLine("\tMöchtest du einen Heiltrank benutzen? [y/n]\n");
+                taste = Console.ReadKey().Key;
+                Console.CursorLeft = 0;
+
+                if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
+                {
+                    Charakter.Health += Items.potionHeal;
+                    Charakter.ammountPotion -= 1;
+
+                    Function.stats();
+
+                }
+                Console.ReadKey();
+            }
         }
     }
 }

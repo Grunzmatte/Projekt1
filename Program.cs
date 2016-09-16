@@ -83,26 +83,8 @@ namespace Projekt1
                 }
                 else
                 {
-                    Console.WriteLine("\tMöchtest du dein Inventar aufrufen bevor du weitergehst? [y/n]\n");
-                    taste = Console.ReadKey().Key;
-                    Console.CursorLeft = 0;
-                    if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
-                    {
-                        Function.stats();
-                        Console.WriteLine("\tMöchtest du einen Heiltrank benutzen? [y/n]\n");
-                        taste = Console.ReadKey().Key;
-                        Console.CursorLeft = 0;
 
-                        if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
-                        {
-                            Charakter.Health += Items.potionHeal;
-                            Charakter.ammountPotion -= 1;
-
-                            Function.stats();
-
-                        }
-                        Console.ReadKey();
-                    }
+                    Function.openInventory();
 
                     if (random.Next(0,2) == 1)
                     {

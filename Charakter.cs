@@ -56,6 +56,14 @@ namespace Projekt1
         internal static string setName() // Der Spieler wird nach seinem Namen gefragt
         {
             Console.Write("\n\n\tDu wachst in einem dunklen Gang mit Kopfschmerzen \n\tund einer Wunde am Kopf auf. \n\n\tWeißt du noch wie dein Name ist ? \n\n\t");
+            name = Console.ReadLine();
+            while (name.Length == 0)
+            {
+                Console.WriteLine("\tUngültige Eingabe!");
+                Console.Write("\tNeue Eingabe: ");
+                name = Console.ReadLine();
+                Console.WriteLine("");
+            }
             Console.WriteLine("\n\tGut, immerhin etwas.\n");
             Function.horizontalRow();
             Console.WriteLine("\n\tDu schaust ob irgendwas in deiner Tasche ist.\n\tDu findest in deiner Tasche einen Heiltrank.\n");
