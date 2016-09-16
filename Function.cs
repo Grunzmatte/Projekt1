@@ -16,7 +16,7 @@ namespace Projekt1
         internal static void pickWeapon()
         {
             ConsoleKey taste;
-            Console.WriteLine("Du siehst vor dir auf dem Boden einen Gegenstand der sich als Waffe eignet möchtest du ihn aufheben ? [y/n]\n");
+            Console.WriteLine("\tDu siehst vor dir auf dem Boden einen Gegenstand der \n\tsich als Waffe eignet möchtest du ihn aufheben ? [y/n]\n");
             taste = Console.ReadKey().Key;
             while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, taste))
             {
@@ -73,6 +73,7 @@ namespace Projekt1
         //Dome
         internal static void fight()
         {
+            int statWindowWidth = 56;   //position des Consolenzeigers für das letzte Zeichen des Statusfensters ("║")
             Enemy enemy = new Enemy();
             Random random = new Random();
             int directions = 5;             //Anzahl von Angriffsrichtungen
@@ -187,14 +188,29 @@ namespace Projekt1
             }
             else
             {
-                Console.WriteLine("Du hast {0} zusammengeschlagen!\n\tWeiter so ;)",enemy.Name);
-                Console.WriteLine("Möchtest du die Waffe des Gegners looten? [y|n]");
-                Console.WriteLine("Deine Waffe: {0}", Charakter.weapon.Name);
-                Console.WriteLine("Schaden: {0}", Charakter.weapon.Damage);
-                Console.WriteLine("Geschwindigkeit: {0}", Charakter.weapon.Speed);
-                Console.WriteLine("Gegner Waffe: {0}", enemy.Weapon.Name);
-                Console.WriteLine("Schaden: {0}", enemy.Weapon.Damage);
-                Console.WriteLine("Geschwindigkeit: {0}", enemy.Weapon.Speed);
+                Console.WriteLine("\n\tDu hast {0} zusammengeschlagen!\n\tWeiter so ;)",enemy.Name);
+                Console.WriteLine("\n\t╔═══════════════════════════════════════════════╗");
+                Console.WriteLine("║Deine Waffe: {0}", Charakter.weapon.Name);
+                Console.CursorLeft = statWindowWidth;
+                Console.WriteLine("║");
+                Console.WriteLine("║Schaden: {0}", Charakter.weapon.Damage);
+                Console.CursorLeft = statWindowWidth;
+                Console.WriteLine("║");
+                Console.WriteLine("║Geschwindigkeit: {0}", Charakter.weapon.Speed);
+                Console.CursorLeft = statWindowWidth;
+                Console.WriteLine("║");
+                Console.WriteLine("\t╠═══════════════════════════════════════════════╣");
+                Console.WriteLine("║Gegner Waffe: {0}", enemy.Weapon.Name);
+                Console.CursorLeft = statWindowWidth;
+                Console.WriteLine("║");
+                Console.WriteLine("║Schaden: {0}", enemy.Weapon.Damage);
+                Console.CursorLeft = statWindowWidth;
+                Console.WriteLine("║");
+                Console.WriteLine("║Geschwindigkeit: {0}", enemy.Weapon.Speed);
+                Console.CursorLeft = statWindowWidth;
+                Console.WriteLine("║");
+                Console.WriteLine("\t╚═══════════════════════════════════════════════╝");
+                Console.WriteLine("\n\tMöchtest du die Waffe des Gegners looten? [y|n]");
                 taste = Console.ReadKey().Key;
                 while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, taste) )
                 {
@@ -203,7 +219,7 @@ namespace Projekt1
                 }
                 if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
                 {
-                    Console.WriteLine("Du hast nun eine neue Waffe benutze sie weiße!");
+                    Console.WriteLine("\n\tDu hast nun eine neue Waffe benutze sie weiße!\n\n");
                     Charakter.weapon = enemy.Weapon;
                 }
             }

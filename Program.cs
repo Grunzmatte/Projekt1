@@ -15,7 +15,7 @@ namespace Projekt1
             int enemyInRoom = 70;   //Wahrscheinlichkeit das beim looten ein Gegner erscheint
             Random random = new Random();
             Position schrift = new Position();
-            ConsoleKey Taste;
+            ConsoleKey taste;
 
             // Namenseingabe
             Charakter.setName();
@@ -24,41 +24,41 @@ namespace Projekt1
             Function.pickWeapon();
             Function.stats(); 
 
-            Console.WriteLine(" \nDu hörst von Rechts Geräusche und folgst vorsichtig dem Gang. ");
-            Taste = Console.ReadKey().Key;
+            Console.WriteLine(" \n\tDu hörst von Rechts Geräusche und folgst vorsichtig dem Gang. ");
+            taste = Console.ReadKey().Key;
             
             //Solange der spieler nicht escape drückt oder stirbt geht das spiel weiter
-            while (!ConsoleKeyInfo.Equals(ConsoleKey.Escape,Taste) && !(Charakter.Health == 0) )
+            while (!ConsoleKeyInfo.Equals(ConsoleKey.Escape,taste) && !(Charakter.Health == 0) )
             {
                 Room room = new Room();
                 Console.WriteLine("Du kommst an eine(n)" + room.type);
                 if (room.type == "Raum")
                 {
                     Console.WriteLine("Möchtest du versuchen den Raum zu durchsuchen? Es könte ein Gegner auf dich lauern!");
-                        Taste = Console.ReadKey().Key;
-                    while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, Taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, Taste) && !ConsoleKeyInfo.Equals(ConsoleKey.Escape, Taste))
+                        taste = Console.ReadKey().Key;
+                    while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))
                     {
                         Console.CursorLeft = 0;
-                        Taste = Console.ReadKey().Key;
+                        taste = Console.ReadKey().Key;
                     }
                     Console.CursorLeft = 0;
-                    if (!ConsoleKeyInfo.Equals(ConsoleKey.Escape, Taste))
+                    if (!ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))
                     {
                         break;
                     }
-                    else if (ConsoleKeyInfo.Equals(ConsoleKey.Y, Taste))
+                    else if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
                     {
                         //Raum looten
                         //Gegner erscheint 70% wahrs.
 
-                        Console.WriteLine("Du gehst in den Raum und fängst an zu looten");
+                        Console.WriteLine("\tDu gehst in den Raum und fängst an zu looten\n");
                         if (random.Next(minProzent, maxProzent+1) <= enemyInRoom)
                         {
                             Function.fight();
                         }
                         else
                         {
-                            Console.WriteLine("Du lootest den Raum und hattest Glück, kein Gegner ist erschienen");
+                            Console.WriteLine("\tDu lootest den Raum und hattest Glück,\n\tkein Gegner ist erschienen\n");
                         }
                         
                     }
@@ -67,14 +67,14 @@ namespace Projekt1
                         //Raum wird nicht gelootet
                         //gegner erscheint 30% wahrs.
 
-                        Console.WriteLine("Du durchquerst den Raum ohne zu looten");
+                        Console.WriteLine("\tDu durchquerst den Raum ohne zu looten\n");
                         if (random.Next(minProzent, maxProzent + 1) > enemyInRoom)
                         {
                             Function.fight();
                         }
                         else
                         {
-                            Console.WriteLine("Du durchquerst den Raum und hattest Glück");
+                            Console.WriteLine("\tDu durchquerst den Raum und hattest Glück\n");
                         }
                        
                     }
@@ -85,13 +85,19 @@ namespace Projekt1
                     if (random.Next(0,2) == 1)
                     {
                         //Gegner erscheint
+                        Function.fight();
                     }
                     else
                     {
                         //nächster Raum
                     }
-                    Console.WriteLine("In welche richtung möchtest du gehen ? [links | geradeaus | rechts] ");
-                    Taste = Console.ReadKey().Key;
+                    Console.WriteLine("\tIn welche richtung möchtest du gehen ? [links | geradeaus | rechts] ");
+                    taste = Console.ReadKey().Key;
+                    while (!ConsoleKeyInfo.Equals(ConsoleKey.LeftArrow, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.RightArrow, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.UpArrow, taste))
+                    {
+                        Console.CursorLeft = 0;
+                        taste = Console.ReadKey().Key;
+                    }
                 }
                 
             }
