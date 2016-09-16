@@ -282,14 +282,34 @@ namespace Projekt1
 
                 if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
                 {
-                    Charakter.Health += Items.potionHeal;
-                    Charakter.ammountPotion -= 1;
+                    Function.healing();
 
                     Function.stats();
 
                 }
                 Console.ReadKey();
             }
+        }
+
+        internal static void healing()
+        {
+
+            if (Charakter.Potion > 0 && Charakter.Health < Charakter.MaxHealth )
+            {
+                Charakter.Health += Items.potionHeal;
+                Charakter.Potion--;
+            }
+
+            else if (Charakter.Potion == 0)
+            {
+                Console.WriteLine("\tDu hast keine Tränke übrig!");
+            }
+            else
+            {
+                Console.WriteLine("\tDu haste volles Leben, du kannst dich nicht Heilen!");
+            }
+
+            
         }
     }
 }

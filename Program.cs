@@ -27,7 +27,9 @@ namespace Projekt1
             Function.horizontalRow();
             Console.WriteLine(" \n\tDu hörst von Rechts Geräusche und folgst vorsichtig dem Gang. ");
             taste = Console.ReadKey().Key;
-            
+
+            Function.openInventory();
+
             //Solange der spieler nicht escape drückt oder stirbt geht das spiel weiter
             while (!ConsoleKeyInfo.Equals(ConsoleKey.Escape,taste) && !(Charakter.Health == 0) )
             {
@@ -85,8 +87,7 @@ namespace Projekt1
                 }
                 else if (room.Name == Room.Names[1])
                 {
-                    // mittlerer Raum = 50% Chance auf Loot
-                    Function.openInventory();
+                    // mittlerer Raum = 50% Chance auf Loot                    
 
                     if (random.Next(0,2) == 1)
                     {
@@ -111,7 +112,7 @@ namespace Projekt1
                 {
                     // großer Raum, 75% Chance auf Loot
                 }
-                
+                Function.openInventory();
             }
 
 

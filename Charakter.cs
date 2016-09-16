@@ -32,13 +32,23 @@ namespace Projekt1
         internal static int Health // Methode um die Health zu verändern und abzufragen
         {
             get { return health; }
-            set { if (health + Items.potionHeal > maxHealth)  health = maxHealth;  else  health += Items.potionHeal;  }
+            set
+            {
+                if (value > maxHealth) health = maxHealth;
+                else if (value <= 0) health = 0;
+                else health = value;
+            }
         }
 
         internal static int Potion // Methode zum Anzahl der Tränke ändern und abfragen
         {
             get { return ammountPotion; }
-            set { if (ammountPotion + Items.potion > maxAmmountPotion)  ammountPotion = maxAmmountPotion;  else  ammountPotion  += Items.potion;}
+            set
+            {
+                if (value > maxAmmountPotion) ammountPotion = maxAmmountPotion;
+                else if (value <= 0) ammountPotion = 0;
+                else ammountPotion = value;
+            }
         }
 
         internal static int MaxPotion // Methode zum Anzahl der Maximalen Tränke ändern und abfragen
