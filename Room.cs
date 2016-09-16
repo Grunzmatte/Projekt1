@@ -10,19 +10,20 @@ namespace Projekt1
     {
         static private Random RNGenerator = new Random();
 
-        static internal string[] Names = { "kleinen", "mittleren", "großen" };
-
-        private string name; //Name des Raumes
-
+        //Raum Daten
+        internal RoomType.Type Type;
+        
         internal Room()
         {
-            name = Names[RNGenerator.Next(0, Names.Length)];
+            Type = SetType();
         }
 
-        internal string Name
+        private RoomType.Type SetType()
         {
-            get { return name; }
+            return RoomType.Names[RNGenerator.Next(0, RoomType.Names.Length)];
         }
+
+        
          
         
     }

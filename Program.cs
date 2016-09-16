@@ -34,8 +34,8 @@ namespace Projekt1
             while (!ConsoleKeyInfo.Equals(ConsoleKey.Escape,taste) && !(Charakter.Health == 0) )
             {
                 Room room = new Room();
-                Console.WriteLine("\n\tDu kommst an eine(n) " + room.Name + " Raum");
-                if (room.Name == Room.Names[0])
+                Console.WriteLine("\n\tDu kommst an eine(n) " + room.Type.name + " Raum");
+                if (room.Type.name == RoomType.Names[0].name)
                 {
                     // kleiner Raum 25% Chance auf Loot
 
@@ -65,13 +65,13 @@ namespace Projekt1
                         if (random.Next(minProzent, maxProzent+1) <= enemyInRoom)
                         {
                             Function.fight();
-                            Function.loot();
+                            Function.loot(room.Type.maxAmmountGold);
 
                         }
                         else
                         {
                             Console.WriteLine("\tDu lootest den Raum und hattest Glück,\n\tkein Gegner ist erschienen\n");
-                            Function.loot();
+                            Function.loot(room.Type.maxAmmountGold);
 
                         }
                         
@@ -94,7 +94,7 @@ namespace Projekt1
                     }
 
                 }
-                else if (room.Name == Room.Names[1])
+                else if (room.Type.name == RoomType.Names[1].name)
                 {
                     // mittlerer Raum = 50% Chance auf Loot                    
 
@@ -102,7 +102,7 @@ namespace Projekt1
                     {
                         //Gegner erscheint
                         Function.fight();
-                        Function.loot();
+                        Function.loot(room.Type.maxAmmountGold);
                     }
                     else
                     {

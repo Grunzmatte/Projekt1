@@ -313,12 +313,11 @@ namespace Projekt1
             
         }
         //Max
-        internal static void loot()
+        internal static void loot(int goldCap)
         {
             Random random = new Random();
             int chance = 100; // 100% MaxChance
             int potionChance = 30;
-            int goldCap = 10;
             int gold = 0;
 
             if (random.Next(1, chance + 1) <= potionChance)
