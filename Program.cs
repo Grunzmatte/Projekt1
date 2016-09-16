@@ -32,9 +32,11 @@ namespace Projekt1
             while (!ConsoleKeyInfo.Equals(ConsoleKey.Escape,taste) && !(Charakter.Health == 0) )
             {
                 Room room = new Room();
-                Console.WriteLine("\n\tDu kommst an eine(n)" + room.type);
-                if (room.type == "Raum")
+                Console.WriteLine("\n\tDu kommst an eine(n) " + Room.roomName + " Raum");
+                if (Room.name == Room.roomName[0])
                 {
+                    // kleiner Raum 25% Chance auf Loot
+
                     Console.WriteLine("\tMöchtest du versuchen den Raum zu durchsuchen? \n\tEs könte ein Gegner auf dich lauern!");
                         taste = Console.ReadKey().Key;
                     while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))
@@ -81,9 +83,9 @@ namespace Projekt1
                     }
 
                 }
-                else
+                else if (Room.name == Room.roomName[1])
                 {
-
+                    // mittlerer Raum = 50% Chance auf Loot
                     Function.openInventory();
 
                     if (random.Next(0,2) == 1)
@@ -104,6 +106,10 @@ namespace Projekt1
                         Console.CursorLeft = 0;
                         taste = Console.ReadKey().Key;
                     }
+                }
+                else
+                {
+                    // großer Raum, 75% Chance auf Loot
                 }
                 
             }
