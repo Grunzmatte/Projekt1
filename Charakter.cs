@@ -57,7 +57,9 @@ namespace Projekt1
         {
             Console.Write("\n\n\tDu wachst in einem dunklen Gang mit Kopfschmerzen \n\tund einer Wunde am Kopf auf. \n\n\tWeißt du noch wie dein Name ist ? \n\n\t");
             name = Console.ReadLine();
-            Console.WriteLine("\n\tGut, immerhin etwas. \n\tDu schaust ob irgendwas in deiner Tasche ist.\n\tDu findest in deiner Tasche einen Heiltrank.\n");
+            Console.WriteLine("\n\tGut, immerhin etwas.\n");
+            Function.horizontalRow();
+            Console.WriteLine("\n\tDu schaust ob irgendwas in deiner Tasche ist.\n\tDu findest in deiner Tasche einen Heiltrank.\n");
             return name;
         }
 

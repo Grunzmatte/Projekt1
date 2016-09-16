@@ -27,7 +27,7 @@ namespace Projekt1
             if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
             {
                 Charakter.weapon = new Weapon();
-                Console.WriteLine(" \nDu hast ein(e/nen) " + Charakter.weapon.Name + " aufgehoben.");
+                Console.WriteLine(" \n\tDu hast ein(e/nen) " + Charakter.weapon.Name + " aufgehoben.");
                 
             }
             else 
@@ -44,7 +44,7 @@ namespace Projekt1
         internal static void stats()
         {
             int statWindowWidth = 56;   //position des Consolenzeigers für das letzte Zeichen des Statusfensters ("║")
-            Console.WriteLine("\tDu schaust wie viel Gold du bereits gesammelt hast.\n\tNun tastest du deinen Körper noch auf Verletzungen ab\n\tund schaust nach wie viele Heiltränke dir noch bleiben.");
+            Console.WriteLine("\tDu schaust wie viel Gold du bereits gesammelt hast.\n\tNun tastest du deinen Körper auf Verletzungen ab\n\tund schaust nach wie viele Heiltränke dir noch bleiben.");
             Console.WriteLine("\t╔═══════════════════════════════════════════════╗");            
             Console.Write("\t║Status von {0}:",Charakter.Name);
             Console.CursorLeft = statWindowWidth;
@@ -78,8 +78,8 @@ namespace Projekt1
             Random random = new Random();
             int directions = 5;             //Anzahl von Angriffsrichtungen
             ConsoleKey taste;
-            float sumSpeedEnemy = 0;      //Summe der Angriffsgeschwindigkeit über alle Angriffe hinweg
-            float sumSpeedPlayer = 0;
+            int sumSpeedEnemy = 0;      //Summe der Angriffsgeschwindigkeit über alle Angriffe hinweg
+            int sumSpeedPlayer = 0;
 
             Console.WriteLine("═════════════════════════════════════════════════════════════════════════════");
             Console.WriteLine("Ein(e) {0} steht auf einmal vor dir und greift dich an!\n", enemy.Name);
@@ -236,16 +236,21 @@ namespace Projekt1
             Console.Write("\t║Gegner Gesundheit bei: [{0}|{1}]", enemy.Health, enemy.MaxHealth);
             Console.CursorLeft = statWindowWidth;
             Console.WriteLine("║");
-            Console.Write("\t║Waffe: {0}\t\t\t\t║", enemy.Weapon.Name);
+            Console.Write("\t║Waffe: {0}", enemy.Weapon.Name);
             Console.CursorLeft = statWindowWidth;
             Console.WriteLine("║");
-            Console.Write("\t║Waffenschaden: {0}\t\t\t\t║", enemy.Weapon.Damage);
+            Console.Write("\t║Waffenschaden: {0}", enemy.Weapon.Damage);
             Console.CursorLeft = statWindowWidth;
             Console.WriteLine("║");
-            Console.Write("\t║Angriffsgeschwindigkeit: {0}\t\t\t║", enemy.Weapon.Speed);
+            Console.Write("\t║Angriffsgeschwindigkeit: {0}", enemy.Weapon.Speed);
             Console.CursorLeft = statWindowWidth;
             Console.WriteLine("║");
             Console.WriteLine("\t╚═══════════════════════════════════════════════╝");
+        }
+
+        internal static void horizontalRow()
+        {
+            Console.WriteLine("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Projekt1
         private WeaponType.Type type;       //Waffentyp
         private string name;                //Name der Waffe
         private int damage;                 //Schaden der Waffe
-        private float atackspeed;           //Geschwindigkeit welche bestimmt wer zuerst zuschlägt
+        private int atackspeed;           //Geschwindigkeit welche bestimmt wer zuerst zuschlägt
         
         internal Weapon()
         {
@@ -41,7 +41,7 @@ namespace Projekt1
 
         public string Name { get { return name; } }     //Waffennamen abfragen
 
-        public float Speed { get { return atackspeed; } }     //Waffengeschwindigkeit abfragen
+        public int Speed { get { return atackspeed; } }     //Waffengeschwindigkeit abfragen
         
         private int SetDamage(WeaponType.Type type)
         {
