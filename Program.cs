@@ -54,8 +54,7 @@ namespace Projekt1
                         Console.WriteLine("Du gehst in den Raum und fängst an zu looten");
                         if (random.Next(minProzent, maxProzent+1) <= enemyInRoom)
                         {
-                            Console.WriteLine("Ein Gegner ist erschienen");
-
+                            Function.fight();
                         }
                         else
                         {
@@ -71,7 +70,7 @@ namespace Projekt1
                         Console.WriteLine("Du durchquerst den Raum ohne zu looten");
                         if (random.Next(minProzent, maxProzent + 1) > enemyInRoom)
                         {
-                            Console.WriteLine("Ein Gegner ist erschienen");
+                            Function.fight();
                         }
                         else
                         {

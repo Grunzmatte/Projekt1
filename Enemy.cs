@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Projekt1
 {   
+    //Dome
     /// <summary>
     /// Gegner werden hier eingestellt
     /// </summary>
-
     class Enemy
     {
         private static Random RNGenerator = new Random();   //Zufalls Zahlen generator 
@@ -26,7 +26,7 @@ namespace Projekt1
         private Weapon weapon;          //Waffe des Gegners
 
         //Konstruktor
-        Enemy()
+        internal Enemy()
         {
             maxHealth = RNGenerator.Next(1, 10);    //Maximalleben wird Zufällig gewählt
             health = maxHealth;                     //Leben entspricht zu beginn immer dem Max Leben
@@ -48,12 +48,21 @@ namespace Projekt1
             get { return health; }                                                  //Lebenspunkte abfragen
             set                                                                     //Lebenspunkte setzen
             {
-                if (health + value > maxHealth) health = maxHealth;                 //wenn heilung das Max Leben übersteigen würde
-                else if (health + value < minHealth) health = minHealth;            //wenn schaden das Min Leben unterschreiten würde
-                else  health += value;                                              //sonst normal lebenspunkte setzen
+                if ( value > maxHealth) health = maxHealth;                 //wenn heilung das Max Leben übersteigen würde
+                else if ( value < minHealth) health = minHealth;            //wenn schaden das Min Leben unterschreiten würde
+                else  health = value;                                              //sonst normal lebenspunkte setzen
             }
         }
-        
+
+        internal int MaxHealth
+        {
+            get { return maxHealth; }                                               //Maximalen Lebenspunkte abfragen
+            set                                                                     //Maximalen Lebenspunkte setzen (bereits implementiert für Buffs / sonstiges?)
+            {
+                maxHealth = value;                                                 //Maximale Lebenspunkte setzen
+            }
+        }
+
         internal Weapon Weapon
         {
             get

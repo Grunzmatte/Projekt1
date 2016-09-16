@@ -15,7 +15,7 @@ Sascha:
 Dome:
 
 - Kampfsystem ( Random Zahl 1 - 5 Spieler muss raten, wenn er richtig liegt macht er kritischen Schaden ( Doppelt) liegt der Spieler mehr als 2 daneben macht der Gegner schaden )
-- Status abfrage ( Info mit HP und Anzahl Tränke sowie Gold
+fertig- Status abfrage ( Info mit HP und Anzahl Tränke sowie Gold
 
 Max:
 
