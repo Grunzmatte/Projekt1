@@ -200,6 +200,8 @@ namespace Projekt1
             {
                 Console.Clear();
                 Console.WriteLine("\n\n\n\n\n\n\t\tDu bist gestorben!");
+                taste = ConsoleKey.Escape;
+                return;
             }
             else
             {
@@ -386,7 +388,9 @@ namespace Projekt1
 
                 if (random.Next(minProzent, maxProzent + 1) <= enemyInRoom)
                 {
-                    Fight(ref taste);                    
+                    Fight(ref taste);
+                    if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))    //Spielabbruch
+                        return;
                     Loot(room.Type.maxAmmountGold);
                 }
                 else
@@ -406,6 +410,8 @@ namespace Projekt1
                 if (random.Next(minProzent, maxProzent + 1) > enemyInRoom)
                 {
                     Fight(ref taste);
+                    if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))    //Spielabbruch
+                        return;
                 }
                 else
                 {
@@ -462,5 +468,59 @@ namespace Projekt1
 
             return false;
         }
+
+        //Max
+        private static void ShowHighscore()
+        {
+            string[] HighscoreList = Highscore.Reader();
+            for (int index = 0; index < 10; index++)
+            {
+                Console.WriteLine(HighscoreList[index]);
+            }
+        }
+
+        internal static void EditHighscore()
+        {
+            string[] HighscoreList = Highscore.Reader();
+            int[] TopTenScores = new int[10]; //Werte von platz 1 bis 10
+            int index = 0;
+            for (; index < 10;index++)
+            {
+                int scorePointer = HighscoreList[index].Length - 1;
+                //scorepointer fängt bei letzter String position von Highscoreplatz(index+1) an bsp Wort "Hallo" scorepointer = 5 (Buchstabe "o")
+                //wiederhole solange bis der scorepointer in der zeile auf " " zeigt
+                //veringere solange scorepointer
+                for (;HighscoreList[index][scorePointer] != '\t';scorePointer--)
+                {
+                }
+                TopTenScores[index] = Convert.ToInt32(HighscoreList[index].Substring(scorePointer+1, HighscoreList[index].Length-1 - scorePointer));
+                
+            }
+            index = 0;
+            while(index < 10 && Charakter.Gold < TopTenScores[index])
+            {
+                index++;
+            }
+            
+            if (Charakter.Gold < TopTenScores[index])
+            {   
+                //Index zeigt auf 10 und Gold betrag ist kleiner als der von platz 10
+                //daher kein Highscoreplatz
+                return;
+            }
+
+            for (int index2 = 8; index2 > index; index2--)
+            {
+                //Highscores solange nach unten verschieben bis Index2 Index erreicht
+                HighscoreList[index2 + 1] = HighscoreList[index2];
+            }
+
+            HighscoreList[index] = (index+1) + "\t" + Charakter.Name + "\t\t" + Charakter.Gold;
+
+            Highscore.Writer(HighscoreList);
+            ShowHighscore();
+
+        }
+
     }
 }

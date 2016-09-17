@@ -76,8 +76,8 @@ namespace Projekt1
                 Console.WriteLine("\n");
             }
             //Highscorliste hier einfügen
-            
-
+            Function.EditHighscore();
+            Console.ReadKey();
         }
     }
 }

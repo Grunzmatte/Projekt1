@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Charakter.cs" />
+    <Compile Include="Highscore.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Function.cs" />
     <Compile Include="Items.cs" />
