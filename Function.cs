@@ -11,42 +11,33 @@ namespace Projekt1
     /// </summary>
 
     class Function
-    {
-        
+    {        
         //Dome + Max
-        internal static void pickWeapon()
+        internal static void PickWeapon(ref ConsoleKey taste)
         {
-            ConsoleKey taste;
-            Console.WriteLine("\tDu siehst vor dir auf dem Boden einen Gegenstand der \n\tsich als Waffe eignet möchtest du ihn aufheben ? [y/n]\n");
-            taste = Console.ReadKey().Key;
-            while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, taste))
-            {
-                Console.CursorLeft = 0;
-                taste = Console.ReadKey().Key;
-            }
-                Console.CursorLeft = 0;
+            Console.Write("\n\tDu siehst vor dir auf dem Boden einen Gegenstand der \n\tsich als Waffe eignet möchtest du ihn aufheben ?\n\t[y/n] : ");
+            taste = YNQuestion();
+            if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))    //Spielabbruch
+                return;
+
             if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
             {
                 Charakter.weapon = new Weapon();
-                Console.WriteLine(" \n\tDu hast ein(e/nen) " + Charakter.weapon.Name + " aufgehoben.");
-                
+                Console.WriteLine("\n\tDu hast ein(e/nen) " + Charakter.weapon.Name + " aufgehoben.");                
             }
             else 
             {
                 Charakter.weapon = new Weapon(Charakter.Name);
-                Console.WriteLine(" \n\tDann kämpfe halt mit deinen Fäusten du Depp!");
-                Function.horizontalRow();
-                
+                Console.WriteLine("\n\tDann kämpfe halt mit deinen Fäusten du Depp!");
+                Function.HorizontalRow();                
             }
-
-
         }
 
         //Dome
-        internal static void stats()
+        internal static void CharakterStats()
         {
             int statWindowWidth = 56;   //position des Consolenzeigers für das letzte Zeichen des Statusfensters ("║")
-            Console.WriteLine("\tDu schaust wie viel Gold du bereits gesammelt hast.\n\tNun tastest du deinen Körper auf Verletzungen ab\n\tund schaust nach wie viele Heiltränke dir noch bleiben.");
+            Function.HorizontalRow();
             Console.WriteLine("\t╔═══════════════════════════════════════════════╗");            
             Console.Write("\t║Status von {0}:",Charakter.Name);
             Console.CursorLeft = statWindowWidth;
@@ -54,38 +45,38 @@ namespace Projekt1
             Console.Write("\t║Charakter Gesundheit bei: [{0}|{1}]", Charakter.Health,Charakter.MaxHealth);
             Console.CursorLeft = statWindowWidth;
             Console.WriteLine("║");
-            Console.Write("\t║Heiltränke: [{0}|{1}]\t\t\t\t║", Charakter.Potion, Charakter.MaxPotion);
+            Console.Write("\t║Heiltränke: [{0}|{1}]", Charakter.Potion, Charakter.MaxPotion);
             Console.CursorLeft = statWindowWidth;
             Console.WriteLine("║");
-            Console.Write("\t║Gold: {0}\t\t\t\t\t║", Charakter.Gold);
+            Console.Write("\t║Gold: {0}", Charakter.Gold);
             Console.CursorLeft = statWindowWidth;
             Console.WriteLine("║");
-            Console.Write("\t║Waffe: {0}\t\t\t\t║", Charakter.weapon.Name);
+            Console.Write("\t║Waffe: {0}", Charakter.weapon.Name);
             Console.CursorLeft = statWindowWidth;
             Console.WriteLine("║");
-            Console.Write("\t║Waffenschaden: {0}\t\t\t\t║", Charakter.weapon.Damage);
+            Console.Write("\t║Waffenschaden: {0}", Charakter.weapon.Damage);
             Console.CursorLeft = statWindowWidth;
             Console.WriteLine("║");
-            Console.Write("\t║Angriffsgeschwindigkeit: {0}\t\t\t║", Charakter.weapon.Speed);
+            Console.Write("\t║Angriffsgeschwindigkeit: {0}", Charakter.weapon.Speed);
             Console.CursorLeft = statWindowWidth;
             Console.WriteLine("║");
             Console.WriteLine("\t╚═══════════════════════════════════════════════╝");
+            Function.HorizontalRow();
         }
 
         //Dome
-        internal static void fight()
+        internal static void Fight(ref ConsoleKey taste)
         {
             int statWindowWidth = 56;   //position des Consolenzeigers für das letzte Zeichen des Statusfensters ("║")
             Enemy enemy = new Enemy();
             Random random = new Random();
-            int directions = 5;             //Anzahl von Angriffsrichtungen
-            ConsoleKey taste;
+            int directions = 5;             //Anzahl von Angriffsrichtungen            
             int sumSpeedEnemy = 0;      //Summe der Angriffsgeschwindigkeit über alle Angriffe hinweg
             int sumSpeedPlayer = 0;
 
-            Function.horizontalRow();
-            Console.WriteLine("\n\tEin(e) {0} erscheint auf einmal vor dir und greift dich an!\n", enemy.Name);
-            enemyStats(enemy);          //Statuswerte des Gegners werden angezeigt
+            Function.HorizontalRow();
+            Console.WriteLine("\tEin(e) {0} erscheint auf einmal vor dir und greift dich an!\n", enemy.Name);
+            EnemyStats(enemy);          //Statuswerte des Gegners werden angezeigt
 
             sumSpeedEnemy += enemy.Weapon.Speed;
             sumSpeedPlayer += Charakter.weapon.Speed;
@@ -98,45 +89,51 @@ namespace Projekt1
                     //Gegner greift an
                     sumSpeedEnemy += enemy.Weapon.Speed;
                     Console.WriteLine();
-                    Function.horizontalRow();
-                    Console.WriteLine("\n\tDer Gegner greift an verteidige dich!");
+                    Function.HorizontalRow();
+                    Console.WriteLine("\tDer Gegner greift an verteidige dich!");
                     Console.WriteLine("\t[1] Oben");
                     Console.WriteLine("\t[2] Links");
                     Console.WriteLine("\t[3] Mitte");
                     Console.WriteLine("\t[4] Rechts");
-                    Console.WriteLine("\t[5] Unten\n\n");
-                    taste = Console.ReadKey().Key;
+                    Console.WriteLine("\t[5] Unten");
+                    Console.Write("\t[1|2|3|4|5] : ");
+
                     int direction = random.Next(1, directions + 1);
-                    while(!ConsoleKeyInfo.Equals(ConsoleKey.D1,taste) && !ConsoleKeyInfo.Equals(ConsoleKey.D2, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.D3, taste)&& !ConsoleKeyInfo.Equals(ConsoleKey.D4, taste)&& !ConsoleKeyInfo.Equals(ConsoleKey.D5, taste))
-                    {
-                        Console.CursorLeft = 0;
-                        taste = Console.ReadKey().Key;
-                    }
+
+                    //Eingabe an sich egal da wert zufällig bestimmt wird
+                    taste = KeyQuestion(ConsoleKey.D1, ConsoleKey.D2, ConsoleKey.D3, ConsoleKey.D4, ConsoleKey.D5, ConsoleKey.Escape);
+                    if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))    //Spielabbruch
+                        return;
+
                     switch (direction)
                     {
                         case 1:
-                            Console.WriteLine("\tBlocken fehlgeschlagen!");
+                            Console.WriteLine("\n\tBlocken fehlgeschlagen!");
                             Console.WriteLine("\tDu nimmst {0} Schaden.", enemy.Weapon.Damage);
                             Charakter.Health -= enemy.Weapon.Damage;
+                            CharakterStats();
                             break;
                         case 2:
-                            Console.WriteLine("\tAngriff leicht abgewehrt!");
+                            Console.WriteLine("\n\tAngriff leicht abgewehrt!");
                             Console.WriteLine("\tDu nimmst {0} Schaden.", enemy.Weapon.Damage / 2);
                             Charakter.Health -= enemy.Weapon.Damage/2;
+                            CharakterStats();
                             break;
                         case 3:
-                            Console.WriteLine("\tAngriff erfolgreich ausgewichen!");
+                            Console.WriteLine("\n\tAngriff erfolgreich ausgewichen!");
+                            CharakterStats();
                             break;                        
                         case 4:
-                            Console.WriteLine("\tAngriff leicht abgewehrt!");
+                            Console.WriteLine("\n\tAngriff leicht abgewehrt!");
                             Console.WriteLine("\tDu nimmst {0} Schaden.", enemy.Weapon.Damage / 2);
                             Charakter.Health -= enemy.Weapon.Damage / 2;
-
+                            CharakterStats();
                             break;
                         case 5:
-                            Console.WriteLine("\tBlocken fehlgeschlagen!");
+                            Console.WriteLine("\n\tBlocken fehlgeschlagen!");
                             Console.WriteLine("\tDu nimmst {0} Schaden.", enemy.Weapon.Damage);
                             Charakter.Health -= enemy.Weapon.Damage;
+                            CharakterStats();
                             break;
                         default:
                             break;
@@ -148,43 +145,50 @@ namespace Projekt1
                     //Spieler greift an
                     sumSpeedPlayer += Charakter.weapon.Speed;
                     Console.WriteLine();
-                    Function.horizontalRow();
-                    Console.WriteLine("\n\tDu greifst an!");
+                    Function.HorizontalRow();
+                    Console.WriteLine("\tDu greifst an!");
                     Console.WriteLine("\tWähle die richtung aus der du angreifst.");
                     Console.WriteLine("\t[1] Oben");
                     Console.WriteLine("\t[2] Links");
                     Console.WriteLine("\t[3] Mitte");
                     Console.WriteLine("\t[4] Rechts");
-                    Console.WriteLine("\t[5] Unten\n\n");
-                    taste = Console.ReadKey().Key;
+                    Console.WriteLine("\t[5] Unten");
+                    Console.Write("\t[1|2|3|4|5] : ");
+
                     int direction = random.Next(1, directions + 1);
-                    while (!ConsoleKeyInfo.Equals(ConsoleKey.D1, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.D2, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.D3, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.D4, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.D5, taste))
-                    {
-                        Console.CursorLeft = 0;
-                        taste = Console.ReadKey().Key;
-                    }
+
+                    //Eingabe an sich egal da Wert zufällig bestimmt wird
+                    taste = KeyQuestion(ConsoleKey.D1, ConsoleKey.D2, ConsoleKey.D3, ConsoleKey.D4, ConsoleKey.D5);
+                    if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))    //Spielabbruch
+                        return;
+
                     switch (direction)
                     {
                         case 1:
-                            Console.WriteLine("\tDer gegner blockt den Schlag!");
+                            Console.WriteLine("\n\tDer gegner blockt den Schlag!");
+                            EnemyStats(enemy);
                             break;
                         case 2:
-                            Console.WriteLine("\tAngriff erfolgreich!");
+                            Console.WriteLine("\n\tAngriff erfolgreich!");
                             Console.WriteLine("\t{0} nimmt {1} Schaden.", enemy.Name, Charakter.weapon.Damage);
                             enemy.Health -= Charakter.weapon.Damage;
+                            EnemyStats(enemy);
                             break;
                         case 3:
-                            Console.WriteLine("\tVolltreffer!");
+                            Console.WriteLine("\n\tVolltreffer!");
                             Console.WriteLine("\t{0} nimmt {1} Schaden.", enemy.Name, Charakter.weapon.Damage *2);
                             enemy.Health -= Charakter.weapon.Damage*2;
+                            EnemyStats(enemy);
                             break;
                         case 4:
-                            Console.WriteLine("\tAngriff erfolgreich!");
+                            Console.WriteLine("\n\tAngriff erfolgreich!");
                             Console.WriteLine("\t{0} nimmt {1} Schaden.", enemy.Name, Charakter.weapon.Damage);
                             enemy.Health -= Charakter.weapon.Damage;
+                            EnemyStats(enemy);
                             break;
                         case 5:
-                            Console.WriteLine("\tDer Gegner ist ausgewichen!");
+                            Console.WriteLine("\n\tDer Gegner ist ausgewichen!");
+                            EnemyStats(enemy);
                             break;
                         default:
                             break;
@@ -199,6 +203,7 @@ namespace Projekt1
             }
             else
             {
+                HorizontalRow();
                 Console.WriteLine("\n\tDu hast {0} zusammengeschlagen!\n\tWeiter so ;)",enemy.Name);
                 Console.WriteLine("\n\t╔═══════════════════════════════════════════════╗");
                 Console.Write("\t║Deine Waffe: {0}", Charakter.weapon.Name);
@@ -221,25 +226,23 @@ namespace Projekt1
                 Console.CursorLeft = statWindowWidth;
                 Console.WriteLine("║");
                 Console.WriteLine("\t╚═══════════════════════════════════════════════╝");
-                Console.WriteLine("\n\tMöchtest du die Waffe des Gegners looten? [y|n]");
-                taste = Console.ReadKey().Key;
-                while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, taste) )
-                {
-                    Console.CursorLeft = 0;
-                    taste = Console.ReadKey().Key;
-                }
+                Console.Write("\n\tMöchtest du die Waffe des Gegners looten? \n\t[y|n] : ");
+
+                taste = YNQuestion();
+                if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))    //Spielabbruch
+                    return;
+
                 if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
                 {
                     Console.WriteLine("\n\tDu hast nun eine neue Waffe benutze sie weiße!\n\n");
                     Charakter.weapon = enemy.Weapon;
-
                 }
             }
-            Function.horizontalRow();
+            Function.HorizontalRow();
         }
 
         //Dome
-        internal static void enemyStats(Enemy enemy)
+        internal static void EnemyStats(Enemy enemy)
         {
             int statWindowWidth = 56;   //position des Consolenzeigers für das letzte Zeichen des Statusfensters ("║")
             Console.WriteLine("\t╔═══════════════════════════════════════════════╗");
@@ -260,58 +263,78 @@ namespace Projekt1
             Console.WriteLine("║");
             Console.WriteLine("\t╚═══════════════════════════════════════════════╝");
         }
+
         //Dome
-        internal static void horizontalRow()
+        internal static void HorizontalRow()
         {
-            Console.WriteLine("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
+            string horizontalRow = "";
+
+            for (int rowLenghtCounter = 0;rowLenghtCounter<Console.WindowWidth;rowLenghtCounter++)
+            {
+                horizontalRow += "═";
+            }
+            Console.WriteLine("\n" + horizontalRow );
         }
+
         //Sascha
-        internal static void openInventory()
-        {
-            ConsoleKey taste; 
-            Console.WriteLine("\tMöchtest du dein Inventar aufrufen bevor du weitergehst? [y/n]\n");
-            taste = Console.ReadKey().Key;
-            Console.CursorLeft = 0;
-                    if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
-                    {
-                Function.stats();
-                Console.WriteLine("\tMöchtest du einen Heiltrank benutzen? [y/n]\n");
-                taste = Console.ReadKey().Key;
-                Console.CursorLeft = 0;
+        internal static void OpenInventory(ref ConsoleKey taste)
+        {             
+            Console.Write("\tMöchtest du dein Inventar aufrufen bevor du weitergehst? \n\t[y/n] : ");
+            taste = YNQuestion();
+            if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))    //Spielabbruch
+                return;
+
+            if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
+            {
+                Console.WriteLine("\tDu schaust wie viel Gold du bereits gesammelt hast.\n\tNun tastest du deinen Körper auf Verletzungen ab\n\tund schaust nach wie viele Heiltränke dir noch bleiben.\n");
+                Function.CharakterStats();
+                Console.Write("\tMöchtest du einen Heiltrank benutzen? \n\t[y/n] : ");
+                taste = YNQuestion();
+                if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))    //Spielabbruch
+                    return;
 
                 if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
                 {
-                    Function.healing();
-
-                    Function.stats();
+                    Function.Healing();
+                    Console.WriteLine("\tDu schaust wie viel Gold du bereits gesammelt hast.\n\tNun tastest du deinen Körper auf Verletzungen ab\n\tund schaust nach wie viele Heiltränke dir noch bleiben.\n");
+                    Function.CharakterStats();
 
                 }
-                Console.ReadKey();
             }
         }
+
         //Max
-        internal static void healing()
+        internal static void Healing()
         {
 
             if (Charakter.Potion > 0 && Charakter.Health < Charakter.MaxHealth )
             {
                 Charakter.Health += Items.potionHeal;
                 Charakter.Potion--;
+                Console.WriteLine("\n\tDu hast dich mit einem Trank geheilt!");
+                Console.ReadKey();
+                Console.CursorLeft = 0;
+                Console.Write(" ");
             }
 
             else if (Charakter.Potion == 0)
             {
-                Console.WriteLine("\tDu hast keine Tränke übrig!");
+                Console.WriteLine("\n\tDu hast keine Tränke übrig!");
+                Console.ReadKey();
+                Console.CursorLeft = 0;
+                Console.Write(" ");
             }
             else
             {
-                Console.WriteLine("\tDu haste volles Leben, du kannst dich nicht Heilen!");
-            }
-
-            
+                Console.WriteLine("\n\tDu haste volles Leben, du kannst dich nicht Heilen!");
+                Console.ReadKey();
+                Console.CursorLeft = 0;
+                Console.Write(" ");
+            }            
         }
+
         //Max
-        internal static void loot(int goldCap)
+        internal static void Loot(int goldCap)
         {
             Random random = new Random();
             int chance = 100; // 100% MaxChance
@@ -327,7 +350,7 @@ namespace Projekt1
                 }
                 else if (Charakter.Potion == Charakter.MaxPotion && Charakter.Health < Charakter.MaxHealth)
                 {
-                    Function.healing();
+                    Function.Healing();
                     Console.WriteLine("\tDu hast einen Heiltrank gefunden und dich sofort damit geheilt!");
                     Charakter.Potion++;
                 }
@@ -343,44 +366,34 @@ namespace Projekt1
 
         }
 
-        internal static void roomContent(Room room, int minProzent, int maxProzent, int enemyInRoom,ref  ConsoleKey taste )
+        //Max + Dome
+        internal static void RoomContent(Room room, int minProzent, int maxProzent, int enemyInRoom,ref  ConsoleKey taste )
         {
             Random random = new Random();
 
-            Console.WriteLine("\tMöchtest du versuchen den Raum zu durchsuchen? \n\tEs könte ein Gegner auf dich lauern! [y|n]");
-            taste = Console.ReadKey().Key;
-
-            while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))
-            {
-                Console.CursorLeft = 0;
-                taste = Console.ReadKey().Key;
-            }
-
-            Console.CursorLeft = 0;
-
-            if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))
-            {
+            Console.Write("\n\tMöchtest du versuchen den Raum zu durchsuchen? \n\tEs könte ein Gegner auf dich lauern! \n\t[y|n] : ");
+            
+            taste = YNQuestion();
+            if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))    //Spielabbruch
                 return;
-            }
 
-            else if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
+            if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
             {
                 //Raum looten
                 //Gegner erscheint 70% wahrs.
 
-                Console.WriteLine("\tDu gehst in den Raum und fängst an zu looten\n");
+                Console.WriteLine("\n\tDu gehst in den Raum und fängst an zu looten");
 
                 if (random.Next(minProzent, maxProzent + 1) <= enemyInRoom)
                 {
-                    Function.fight();
-                    Function.loot(room.Type.maxAmmountGold);
-
+                    Fight(ref taste);                    
+                    Loot(room.Type.maxAmmountGold);
                 }
                 else
                 {
-                    Console.WriteLine("\tDu lootest den Raum und hattest Glück,\n\tkein Gegner ist erschienen\n");
-                    Function.loot(room.Type.maxAmmountGold);
-
+                    Console.WriteLine("\n\tDu lootest den Raum und hattest Glück,\n\tkein Gegner ist erschienen.");
+                    HorizontalRow();
+                    Loot(room.Type.maxAmmountGold);
                 }
 
             }
@@ -389,17 +402,65 @@ namespace Projekt1
                 //Raum wird nicht gelootet
                 //gegner erscheint 30% wahrs.
 
-                Console.WriteLine("\tDu durchquerst den Raum ohne zu looten\n");
+                Console.WriteLine("\n\tDu durchquerst den Raum ohne zu looten");
                 if (random.Next(minProzent, maxProzent + 1) > enemyInRoom)
                 {
-                    Function.fight();
+                    Fight(ref taste);
                 }
                 else
                 {
-                    Console.WriteLine("\tDu durchquerst den Raum und hattest Glück\n");
+                    Console.WriteLine("\n\tDu durchquerst den Raum und hattest Glück");
                 }
 
             }
+        }
+
+        //Dome
+        internal static ConsoleKey YNQuestion()
+        {
+            Position textPosition = new Position();
+            textPosition.Spalte = (uint)Console.CursorLeft;
+            ConsoleKey taste = Console.ReadKey().Key;
+            while (!ConsoleKeyInfo.Equals(ConsoleKey.Y, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.N, taste) && !ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))
+            {
+                Console.CursorLeft = (int)textPosition.Spalte;
+                Console.Write(" ");
+                Console.CursorLeft = (int)textPosition.Spalte;
+                taste = Console.ReadKey().Key;
+            }
+            Console.WriteLine();
+            return taste;
+        }
+
+        //Dome
+        internal static ConsoleKey KeyQuestion(params ConsoleKey[] permissibleEntrys) //wiederholt eingabe solange bis sie gültig ist
+        {
+            Position textPosition = new Position();
+            textPosition.Spalte = (uint)Console.CursorLeft;
+            ConsoleKey taste = Console.ReadKey().Key;
+            while (!CheckInput(ref taste,permissibleEntrys))
+            {
+                Console.CursorLeft = (int)textPosition.Spalte;
+                Console.Write(" ");
+                Console.CursorLeft = (int)textPosition.Spalte;
+                taste = Console.ReadKey().Key;
+            }
+            Console.WriteLine();
+            return taste;
+        }
+
+        //Dome
+        private static bool CheckInput(ref ConsoleKey taste, ConsoleKey[] permissibleEntrys)    //prüft ob taste zulässig ist
+        {
+            for (int item = 0; item < permissibleEntrys.Length;item++)
+            {
+                if (ConsoleKeyInfo.Equals(permissibleEntrys[item] , taste) || ConsoleKeyInfo.Equals(taste , ConsoleKey.Escape))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

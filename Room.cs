@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projekt1
 {
+    //Dave + Dome
     class Room
     {
         static private Random RNGenerator = new Random();
@@ -22,9 +23,6 @@ namespace Projekt1
         {
             return RoomType.Names[RNGenerator.Next(0, RoomType.Names.Length)];
         }
-
-        
-         
-        
+                
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projekt1
 {
+    //Dave + Dome
     class RoomType
     {
         //Bauplan für Raum Typen
