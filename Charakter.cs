@@ -60,7 +60,7 @@ namespace Projekt1
         internal static int Gold // Methode zum Anzahl des Goldes ändern und abfragen
         {
             get { return gold; }
-            set { gold += value; }
+            set { gold = value; }
         }
 
         internal static string setName() // Der Spieler wird nach seinem Namen gefragt
