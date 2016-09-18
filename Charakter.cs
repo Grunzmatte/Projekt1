@@ -9,7 +9,6 @@ namespace Projekt1
     /// <summary>
     /// Charakter wird hier eingestellt
     /// </summary>
-
     // Max + Dome
     static class Charakter
     {

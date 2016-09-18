@@ -13,6 +13,10 @@ namespace Projekt1
     class Function
     {        
         //Dome + Max
+        /// <summary>
+        /// Abfrage ob Spieler am Anfang eine Waffe aufheben möchte
+        /// </summary>
+        /// <param name="taste">speichert die Information über den letzten Tastendruck</param>
         internal static void PickWeapon(ref ConsoleKey taste)
         {
             Console.Write("\n\tDu siehst vor dir auf dem Boden einen Gegenstand der \n\tsich als Waffe eignet möchtest du ihn aufheben ?\n\t[y/n] : ");
@@ -34,6 +38,9 @@ namespace Projekt1
         }
 
         //Dome
+        /// <summary>
+        /// Zeigt den Status des Charakters an : Leben, Tränke, Gold, Waffe
+        /// </summary>
         internal static void CharakterStats()
         {
             int statWindowWidth = 56;   //position des Consolenzeigers für das letzte Zeichen des Statusfensters ("║")
@@ -65,6 +72,10 @@ namespace Projekt1
         }
 
         //Dome
+        /// <summary>
+        /// Funktion welche einen Gegner generiert und den Spieler mit deisem solange kämpfen lässt bis einer Stirbt
+        /// </summary>
+        /// <param name="taste">speichert die Information über den letzten Tastendruck</param>
         internal static void Fight(ref ConsoleKey taste)
         {
             int statWindowWidth = 56;   //position des Consolenzeigers für das letzte Zeichen des Statusfensters ("║")
@@ -244,6 +255,10 @@ namespace Projekt1
         }
 
         //Dome
+        /// <summary>
+        /// Zeigt den Status des Gegners an
+        /// </summary>
+        /// <param name="enemy">Gegner dessen Status angezeigt werden soll</param>
         internal static void EnemyStats(Enemy enemy)
         {
             int statWindowWidth = 56;   //position des Consolenzeigers für das letzte Zeichen des Statusfensters ("║")
@@ -267,6 +282,10 @@ namespace Projekt1
         }
 
         //Dome
+        /// <summary>
+        /// gibt eine Horizontale Linie über das gesamte Konsolenfenster aus 
+        /// kann zur besseren übersichtlichkeit verwendet werden
+        /// </summary>
         internal static void HorizontalRow()
         {
             string horizontalRow = "";
@@ -279,6 +298,10 @@ namespace Projekt1
         }
 
         //Sascha
+        /// <summary>
+        /// startet eine Abfrage ob man den Status des Charakters sehen möchte und ob man sich heilen möchte.
+        /// </summary>
+        /// <param name="taste">speichert die Information über den letzten Tastendruck</param>
         internal static void OpenInventory(ref ConsoleKey taste)
         {             
             Console.Write("\tMöchtest du dein Inventar aufrufen bevor du weitergehst? \n\t[y/n] : ");
@@ -306,6 +329,9 @@ namespace Projekt1
         }
 
         //Max
+        /// <summary>
+        /// Funktion zur Heilung des Charakters durch verberauch eines Heiltrankes
+        /// </summary>
         internal static void Healing()
         {
 
@@ -336,6 +362,10 @@ namespace Projekt1
         }
 
         //Max
+        /// <summary>
+        /// berechnet das loot anhand der goldCap für die Raumgröße und lässt gelegentlich einen Heitrank dropen
+        /// </summary>
+        /// <param name="goldCap">Maximalwert an Gold welcher gefunden werden kann. Abhängig von Raumgröße</param>
         internal static void Loot(int goldCap)
         {
             Random random = new Random();
@@ -369,6 +399,14 @@ namespace Projekt1
         }
 
         //Max + Dome
+        /// <summary>
+        /// Beinhaltet den Ablauf welcher durchlaufen wird pro neuem Raum
+        /// </summary>
+        /// <param name="room">Raum welcher durchlaufen wird</param>
+        /// <param name="minProzent">Entsprciht 1 %</param>
+        /// <param name="maxProzent">Entspricht 100%</param>
+        /// <param name="enemyInRoom">Wahrscheinlichkeit in den Räumen auf gegner zu treffen</param>
+        /// <param name="taste">speichert die Information über den letzten Tastendruck</param>
         internal static void RoomContent(Room room, int minProzent, int maxProzent, int enemyInRoom,ref  ConsoleKey taste )
         {
             Random random = new Random();
@@ -422,6 +460,10 @@ namespace Projekt1
         }
 
         //Dome
+        /// <summary>
+        /// Ja Nein (Escape) Abfrage welche sichergeht das nur zulässige Tasten gedrückt werden
+        /// </summary>
+        /// <returns>Liefert die Gültige Tasteneingabe zurück</returns>
         internal static ConsoleKey YNQuestion()
         {
             Position textPosition = new Position();
@@ -439,6 +481,11 @@ namespace Projekt1
         }
 
         //Dome
+        /// <summary>
+        /// Abfrage welche sichergeht das nur zulässige Tasten gedrückt werden
+        /// </summary>
+        /// <param name="permissibleEntrys">Liste aller zulässigen Tasten</param>
+        /// <returns>Liefert die Gültige Tasteneingabe zurück</returns>
         internal static ConsoleKey KeyQuestion(params ConsoleKey[] permissibleEntrys) //wiederholt eingabe solange bis sie gültig ist
         {
             Position textPosition = new Position();
@@ -456,6 +503,12 @@ namespace Projekt1
         }
 
         //Dome
+        /// <summary>
+        /// prüft ob taste eine zulässige eingabe war und liefert das ergebnis in form eines Bool wertes zurück
+        /// </summary>
+        /// <param name="taste">speichert die Information über den letzten Tastendruck</param>
+        /// <param name="permissibleEntrys">Liste aller zulässigen Tasten</param>
+        /// <returns></returns>
         private static bool CheckInput(ref ConsoleKey taste, ConsoleKey[] permissibleEntrys)    //prüft ob taste zulässig ist
         {
             for (int item = 0; item < permissibleEntrys.Length;item++)
@@ -465,20 +518,27 @@ namespace Projekt1
                     return true;
                 }
             }
-
             return false;
         }
 
         //Max
+        /// <summary>
+        /// Zeigt die Highscoreliste an
+        /// </summary>
         private static void ShowHighscore()
         {
+            Console.Clear();
+            Console.WriteLine("\n\n");
             string[] HighscoreList = Highscore.Reader();
             for (int index = 0; index < 10; index++)
             {
-                Console.WriteLine(HighscoreList[index]);
+                Console.WriteLine("\t" +HighscoreList[index]);
             }
         }
 
+        /// <summary>
+        /// Prüft ob Spieler in die Highscores kommt und editiert sie ggf
+        /// </summary>
         internal static void EditHighscore()
         {
             string[] HighscoreList = Highscore.Reader();

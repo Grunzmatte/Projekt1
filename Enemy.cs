@@ -8,7 +8,7 @@ namespace Projekt1
 {   
     //Dome
     /// <summary>
-    /// Gegner werden hier eingestellt
+    /// Gegner werden hier generiert und eingestellt
     /// </summary>
     class Enemy
     {
@@ -25,7 +25,9 @@ namespace Projekt1
         private string name;            //Gegner Name
         private Weapon weapon;          //Waffe des Gegners
 
-        //Konstruktor
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
         internal Enemy()
         {
             maxHealth = RNGenerator.Next(1, 10);    //Maximalleben wird Zufällig gewählt
@@ -34,6 +36,9 @@ namespace Projekt1
             weapon = new Weapon();                  //Waffe wird Zufällig generiert
         }
 
+        /// <summary>
+        /// Propertie für Namensabfrage. Namensänderungen sind unzulässig.
+        /// </summary>
         internal string Name
         {
             get                                                                     //Name darf nur abgefragt werden
@@ -43,6 +48,9 @@ namespace Projekt1
             }                  
         }
 
+        /// <summary>
+        /// Propertie für Lebens- abfrage und änderung
+        /// </summary>
         internal int Health
         {
             get { return health; }                                                  //Lebenspunkte abfragen
@@ -54,6 +62,9 @@ namespace Projekt1
             }
         }
 
+        /// <summary>
+        /// Propertie für Maxleben- abfrage und änderung
+        /// </summary>
         internal int MaxHealth
         {
             get { return maxHealth; }                                               //Maximalen Lebenspunkte abfragen
@@ -63,13 +74,15 @@ namespace Projekt1
             }
         }
 
+        /// <summary>
+        /// Propertie für Waffen abfrage
+        /// </summary>
         internal Weapon Weapon
         {
             get
             {
                 return weapon;
             }
-
         }
     }
 }
