@@ -43,18 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Charakter.cs" />
-    <Compile Include="Highscore.cs" />
-    <Compile Include="Enemy.cs" />
-    <Compile Include="Function.cs" />
-    <Compile Include="Items.cs" />
-    <Compile Include="Position.cs" />
+    <Compile Include="Charakters\Charakter.cs" />
+    <Compile Include="Functions\Highscore.cs" />
+    <Compile Include="Enemys\Enemy.cs" />
+    <Compile Include="Functions\Function.cs" />
+    <Compile Include="Items\Items.cs" />
+    <Compile Include="Functions\Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Room.cs" />
-    <Compile Include="RoomTypes.cs" />
-    <Compile Include="Weapon.cs" />
-    <Compile Include="WeaponTypes.cs" />
+    <Compile Include="Rooms\Room.cs" />
+    <Compile Include="Rooms\RoomTypes.cs" />
+    <Compile Include="Weapons\Weapon.cs" />
+    <Compile Include="Weapons\WeaponTypes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

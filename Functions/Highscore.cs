@@ -7,7 +7,7 @@ using System.IO;
 using System.Data;
 
 
-namespace Projekt1
+namespace Functions
 {
     static class Highscore
     {

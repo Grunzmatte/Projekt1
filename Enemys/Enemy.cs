@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Weapons;
 
-namespace Projekt1
+namespace Enemys
 {   
     //Dome
     /// <summary>

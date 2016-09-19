@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Charakters;
+using Enemys;
+using Weapons;
+using Items;
+using Rooms;
 
-namespace Projekt1
+
+namespace Functions
 {
     /// <summary>
     /// Hier werden alle Funktionen gespeichert
@@ -339,7 +345,7 @@ namespace Projekt1
 
             if (Charakter.Potion > 0 && Charakter.Health < Charakter.MaxHealth )
             {
-                Charakter.Health += Items.potionHeal;
+                Charakter.Health += Item.potionHeal;
                 Charakter.Potion--;
                 Console.WriteLine("\tDu hast dich mit einem Trank geheilt!");
                 Console.ReadKey();

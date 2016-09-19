@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Weapons;
+using Functions;
 
-namespace Projekt1
+namespace Charakters
 {   
     /// <summary>
     /// Charakter wird hier eingestellt
