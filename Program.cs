@@ -45,6 +45,9 @@ namespace Projekt1
                 
                 //Raum wird abgearbeitet (Kampf ? / Looten?)
                 Function.RoomContent(room, minProzent, maxProzent, enemyInRoom,ref taste);
+                if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste) || Charakter.Health == 0)    //Wenn man gestorben ist
+                    break;
+
                 Function.HorizontalRow();
 
                 //Raum beendet abfrage in welche Richtung man als nächste will
@@ -75,8 +78,9 @@ namespace Projekt1
                 Console.Clear();
                 Console.WriteLine("\n");
             }
-            //Highscorliste hier einfügen
-            Function.EditHighscore();
+            //Highscorliste hier einfügen Wenn fertig gestellt .
+            //Console.ReadKey();
+            //Function.EditHighscore();
             Console.ReadKey();
         }
     }

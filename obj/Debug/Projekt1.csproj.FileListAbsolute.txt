@@ -28,3 +28,9 @@ C:\Users\Max\Documents\Visual Studio 2015\Projects\Projekt1-master\obj\Debug\Pro
 C:\Users\Max\Documents\Visual Studio 2015\Projects\Projekt1-master\bin\Debug\Projekt1.exe
 C:\Users\Max\Documents\Visual Studio 2015\Projects\Projekt1-master\bin\Debug\Projekt1.pdb
 C:\Users\Max\Documents\Visual Studio 2015\Projects\Projekt1-master\obj\Debug\Projekt1.csprojResolveAssemblyReference.cache
+C:\Users\Armin Nicht\Desktop\Projekt1\bin\Debug\Projekt1.exe.config
+C:\Users\Armin Nicht\Desktop\Projekt1\obj\Debug\Projekt1.exe
+C:\Users\Armin Nicht\Desktop\Projekt1\obj\Debug\Projekt1.pdb
+C:\Users\Armin Nicht\Desktop\Projekt1\bin\Debug\Projekt1.exe
+C:\Users\Armin Nicht\Desktop\Projekt1\bin\Debug\Projekt1.pdb
+C:\Users\Armin Nicht\Desktop\Projekt1\obj\Debug\Projekt1.csprojResolveAssemblyReference.cache

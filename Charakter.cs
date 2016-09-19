@@ -80,7 +80,7 @@ namespace Projekt1
                         
             Console.WriteLine("\n\tGut, immerhin etwas.");
             Function.HorizontalRow();
-            Console.WriteLine("\n\tDu schaust ob irgendwas in deiner Tasche ist.\n\tDu findest in deiner Tasche einen Heiltrank.");
+            Console.WriteLine("\tDu schaust ob irgendwas in deiner Tasche ist.\n\tDu findest in deiner Tasche einen Heiltrank.");
             return name;
         }
 

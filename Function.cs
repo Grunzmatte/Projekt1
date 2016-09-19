@@ -19,7 +19,7 @@ namespace Projekt1
         /// <param name="taste">speichert die Information über den letzten Tastendruck</param>
         internal static void PickWeapon(ref ConsoleKey taste)
         {
-            Console.Write("\n\tDu siehst vor dir auf dem Boden einen Gegenstand der \n\tsich als Waffe eignet möchtest du ihn aufheben ?\n\t[y/n] : ");
+            Console.Write("\tDu siehst vor dir auf dem Boden einen Gegenstand der \n\tsich als Waffe eignet möchtest du ihn aufheben ?\n\t[y/n] : ");
             taste = YNQuestion();
             if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))    //Spielabbruch
                 return;
@@ -27,13 +27,13 @@ namespace Projekt1
             if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
             {
                 Charakter.weapon = new Weapon();
-                Console.WriteLine("\n\tDu hast ein(e/nen) " + Charakter.weapon.Name + " aufgehoben.");                
+                Console.WriteLine("\n\tDu hast ein(e/en) " + Charakter.weapon.Name + " aufgehoben.");                
             }
             else 
             {
                 Charakter.weapon = new Weapon(Charakter.Name);
                 Console.WriteLine("\n\tDann kämpfe halt mit deinen Fäusten du Depp!");
-                Function.HorizontalRow();                
+                               
             }
         }
 
@@ -86,7 +86,7 @@ namespace Projekt1
             int sumSpeedPlayer = 0;
 
             Function.HorizontalRow();
-            Console.WriteLine("\tEin(e) {0} erscheint auf einmal vor dir und greift dich an!\n", enemy.Name);
+            Console.WriteLine("\tEin(e) {0} erscheint auf einmal vor dir und greift dich an!", enemy.Name);
             EnemyStats(enemy);          //Statuswerte des Gegners werden angezeigt
 
             sumSpeedEnemy += enemy.Weapon.Speed;
@@ -99,8 +99,7 @@ namespace Projekt1
                 {
                     //Gegner greift an
                     sumSpeedEnemy += enemy.Weapon.Speed;
-                    Console.WriteLine();
-                    Function.HorizontalRow();
+                    
                     Console.WriteLine("\tDer Gegner greift an verteidige dich!");
                     Console.WriteLine("\t[1] Oben");
                     Console.WriteLine("\t[2] Links");
@@ -155,8 +154,7 @@ namespace Projekt1
                 {
                     //Spieler greift an
                     sumSpeedPlayer += Charakter.weapon.Speed;
-                    Console.WriteLine();
-                    Function.HorizontalRow();
+                    
                     Console.WriteLine("\tDu greifst an!");
                     Console.WriteLine("\tWähle die richtung aus der du angreifst.");
                     Console.WriteLine("\t[1] Oben");
@@ -216,7 +214,6 @@ namespace Projekt1
             }
             else
             {
-                HorizontalRow();
                 Console.WriteLine("\n\tDu hast {0} zusammengeschlagen!\n\tWeiter so ;)",enemy.Name);
                 Console.WriteLine("\n\t╔═══════════════════════════════════════════════╗");
                 Console.Write("\t║Deine Waffe: {0}", Charakter.weapon.Name);
@@ -262,6 +259,7 @@ namespace Projekt1
         internal static void EnemyStats(Enemy enemy)
         {
             int statWindowWidth = 56;   //position des Consolenzeigers für das letzte Zeichen des Statusfensters ("║")
+            Function.HorizontalRow();
             Console.WriteLine("\t╔═══════════════════════════════════════════════╗");
             Console.Write("\t║Status von {0}:",enemy.Name);
             Console.CursorLeft = statWindowWidth;
@@ -279,6 +277,7 @@ namespace Projekt1
             Console.CursorLeft = statWindowWidth;
             Console.WriteLine("║");
             Console.WriteLine("\t╚═══════════════════════════════════════════════╝");
+            Function.HorizontalRow();
         }
 
         //Dome
@@ -294,7 +293,7 @@ namespace Projekt1
             {
                 horizontalRow += "═";
             }
-            Console.WriteLine("\n" + horizontalRow );
+            Console.WriteLine("\n" + horizontalRow +"\n");
         }
 
         //Sascha
@@ -311,7 +310,8 @@ namespace Projekt1
 
             if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
             {
-                Console.WriteLine("\tDu schaust wie viel Gold du bereits gesammelt hast.\n\tNun tastest du deinen Körper auf Verletzungen ab\n\tund schaust nach wie viele Heiltränke dir noch bleiben.\n");
+                Function.HorizontalRow();
+                Console.WriteLine("\tDu schaust wie viel Gold du bereits gesammelt hast.\n\tNun tastest du deinen Körper auf Verletzungen ab\n\tund schaust nach wie viele Heiltränke dir noch bleiben.");
                 Function.CharakterStats();
                 Console.Write("\tMöchtest du einen Heiltrank benutzen? \n\t[y/n] : ");
                 taste = YNQuestion();
@@ -320,8 +320,10 @@ namespace Projekt1
 
                 if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
                 {
+                    Function.HorizontalRow();
                     Function.Healing();
-                    Console.WriteLine("\tDu schaust wie viel Gold du bereits gesammelt hast.\n\tNun tastest du deinen Körper auf Verletzungen ab\n\tund schaust nach wie viele Heiltränke dir noch bleiben.\n");
+                    Function.HorizontalRow();
+                    Console.WriteLine("\tDu schaust wie viel Gold du bereits gesammelt hast.\n\tNun tastest du deinen Körper auf Verletzungen ab\n\tund schaust nach wie viele Heiltränke dir noch bleiben.");
                     Function.CharakterStats();
 
                 }
@@ -339,7 +341,7 @@ namespace Projekt1
             {
                 Charakter.Health += Items.potionHeal;
                 Charakter.Potion--;
-                Console.WriteLine("\n\tDu hast dich mit einem Trank geheilt!");
+                Console.WriteLine("\tDu hast dich mit einem Trank geheilt!");
                 Console.ReadKey();
                 Console.CursorLeft = 0;
                 Console.Write(" ");
@@ -347,14 +349,14 @@ namespace Projekt1
 
             else if (Charakter.Potion == 0)
             {
-                Console.WriteLine("\n\tDu hast keine Tränke übrig!");
+                Console.WriteLine("\tDu hast keine Tränke übrig!");
                 Console.ReadKey();
                 Console.CursorLeft = 0;
                 Console.Write(" ");
             }
             else
             {
-                Console.WriteLine("\n\tDu haste volles Leben, du kannst dich nicht Heilen!");
+                Console.WriteLine("\tDu haste volles Leben, du kannst dich nicht Heilen!");
                 Console.ReadKey();
                 Console.CursorLeft = 0;
                 Console.Write(" ");
@@ -414,15 +416,15 @@ namespace Projekt1
             Console.Write("\n\tMöchtest du versuchen den Raum zu durchsuchen? \n\tEs könte ein Gegner auf dich lauern! \n\t[y|n] : ");
             
             taste = YNQuestion();
+            HorizontalRow();
             if (ConsoleKeyInfo.Equals(ConsoleKey.Escape, taste))    //Spielabbruch
                 return;
 
             if (ConsoleKeyInfo.Equals(ConsoleKey.Y, taste))
             {
                 //Raum looten
-                //Gegner erscheint 70% wahrs.
-
-                Console.WriteLine("\n\tDu gehst in den Raum und fängst an zu looten");
+                //Gegner erscheint 70% wahrs.                
+                Console.WriteLine("\tDu gehst in den Raum und fängst an zu looten");
 
                 if (random.Next(minProzent, maxProzent + 1) <= enemyInRoom)
                 {
@@ -444,7 +446,7 @@ namespace Projekt1
                 //Raum wird nicht gelootet
                 //gegner erscheint 30% wahrs.
 
-                Console.WriteLine("\n\tDu durchquerst den Raum ohne zu looten");
+                Console.WriteLine("\tDu durchquerst den Raum ohne zu looten");
                 if (random.Next(minProzent, maxProzent + 1) > enemyInRoom)
                 {
                     Fight(ref taste);
@@ -521,7 +523,7 @@ namespace Projekt1
             return false;
         }
 
-        //Max
+        //Max + Dome
         /// <summary>
         /// Zeigt die Highscoreliste an
         /// </summary>
@@ -536,6 +538,7 @@ namespace Projekt1
             }
         }
 
+        //Dome
         /// <summary>
         /// Prüft ob Spieler in die Highscores kommt und editiert sie ggf
         /// </summary>

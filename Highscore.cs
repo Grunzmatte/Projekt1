@@ -12,9 +12,7 @@ namespace Projekt1
     static class Highscore
     {
         private static FileStream fileMangaer;
-        private static string filePath = "Highscore.txt";
-
-        
+        private static string filePath = "Highscore.txt";        
 
         internal static string[] Reader()
         {
